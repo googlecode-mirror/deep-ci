@@ -1,0 +1,249 @@
+@charset "utf-8";
+/* CSS Document */
+body {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	background: #fff;/*url(../images/bg.gif);*/
+	margin: 0; /* 最好将 body 元素的边距和填充设置为 0 以覆盖不同的浏览器默认值 */
+	padding: 0;
+	text-align: center; /* 在 IE 5* 浏览器中，这会将容器居中。文本随后将在 #container 选择器中设置为默认左对齐 */
+	color: #000000;
+	height:100%;
+	font-size:12px;
+}
+input{background:#FFFFFF; border:1px #cccccc solid; color:#666666;}
+a { color:#4493d6; text-decoration:none;}
+a:hover{ color:#fff;text-decoration: underline;}a:visited {color: #666666;text-decoration: underline;}
+
+/*首頁樣式
+=============================================================================*/
+.admin_index #container {
+	width: 526px;  /* 使用比最大宽度 (800px) 小 20px 的宽度可显示浏览器界面元素，并避免出现水平滚动条 */
+	margin: 0 auto; /* 自动边距（与宽度一起）会将页面居中 */
+	text-align: left; /* 这将覆盖 body 元素上的“text-align: center”。 */
+	padding-top:100px;
+}
+.admin_index #header {
+	background: url(../images/admin_in_top.jpg); 
+	height:208px;
+}
+.admin_index #mainContent {
+	padding: 7px 20px ; /* 请记住，填充是 div 方块内部的空间，边距则是 div 方块外部的空间 */
+	background: url(../images/admin_in_bg.jpg) no-repeat;
+	height:75px;
+	line-height:180%;
+}
+.admin_index #mainContent label{
+	font-size:12px;
+	color:#666666;
+	width:170px;
+	text-align:right;
+	float:left;
+	padding-left:200px;
+	
+	}
+.admin_index #mainContent input{
+	border:1px #ccc solid;
+	width:100px;
+	margin:2px 0px;
+	/*width:expression((this.type=="password" || this.type=="text")?'100px':'');*/
+	star : expression(
+onmouseover=function(){this.style.borderColor="#ffa000"},
+onmouseout=function(){this.style.borderColor="#ccc"})
+}
+
+.admin_index #footer {
+	font-size:9px;
+	background:url(../images/admin_in_root.jpg);
+	height:47px;
+}
+.admin_index #footer a{
+	color:#666;
+	text-decoration:underline;
+}
+.admin_index #footer a:hover{
+	text-decoration:none;
+}
+.admin_index #footer p {
+	color:#666;
+	text-align:center;
+	margin: 0; /* 将脚注中第一个元素的边距设置为零将避免出现可能的边距重叠（即 div 之间出现的空白）*/
+	padding: 5px 0 0 0; /* 就像边距会产生空白一样，此元素上的填充也将产生空白，但不会出现边距重叠问题 */
+}
+
+
+/*内頁樣式
+=================================================================================*/
+.admin_page #container {
+	margin: 0 20px; /* 自动边距（与宽度一起）会将页面居中 */
+	text-align: left;
+	;
+}
+.admin_page #header {
+	background: url(../images/page_top.jpg) right 0 repeat-x; 
+	height:84px;
+	border-bottom:0px solid #1e5b8d;
+	margin:5px 0px;
+}
+.admin_page #sidebar1 {
+	float: left; 
+	width: 167px; 
+	background: #fff; 
+	border:1px solid #e6e4e4;
+	padding: 5px;
+}
+.admin_page #mainContent {
+	margin: 0 0 0 182px; 
+	background: #fff; 
+	border:1px solid #e6e4e4;
+	padding: 0 3px; 
+}
+.admin_page #mainContent h1{
+	color:#666;
+	text-align:left;
+	margin: 0; /* 将脚注中第一个元素的边距设置为零将避免出现可能的边距重叠（即 div 之间出现的空白）*/
+	padding: 5px 0 0 0px; /* 就像边距会产生空白一样，此元素上的填充也将产生空白，但不会出现边距重叠问题 */
+	font-size:12px;
+}
+.admin_page #mainContent p{
+	color:#666;
+	text-align:left;
+	margin: 0; /* 将脚注中第一个元素的边距设置为零将避免出现可能的边距重叠（即 div 之间出现的空白）*/
+	padding: 10px 0 0 0px; /* 就像边距会产生空白一样，此元素上的填充也将产生空白，但不会出现边距重叠问题 */
+	font-size:12px;
+}
+
+.admin_page #footer {
+	font-size:12px;
+	background:url(../images/page_root.gif) right repeat-x #fff;
+	height:53px;
+	border:1px solid #e7e5e5;
+	margin:5px 0px;
+	
+}
+.admin_page #footer a{
+	color:#666;
+}
+.admin_page #footer a:hover{
+	color:#417abd;
+	text-decoration:underline;
+}
+.admin_page #footer p {
+	color:#666;
+	text-align:center;
+	font-size:10px;
+	margin: 0; /* 将脚注中第一个元素的边距设置为零将避免出现可能的边距重叠（即 div 之间出现的空白）*/
+	padding: 15px 0 0 10px; /* 就像边距会产生空白一样，此元素上的填充也将产生空白，但不会出现边距重叠问题 */
+}
+.fltrt { /* 此类可用来使页面中的元素向右浮动。浮动元素必须位于页面上要与之相邻的元素之前。 */
+	float: right;
+	margin-left: 8px;
+}
+.fltlft { /* 此类可用来使页面上的元素向左浮动 */
+	float: left;
+	margin-right: 8px;
+}
+
+.clearfloat { /* 此类应当放在 div 或 break 元素上，而且该元素应当是完全包含浮动的容器关闭之前的最后一个元素 */
+	clear:both;
+    height:0;
+    font-size: 1px;
+    line-height: 0px;
+}
+.location{float:left;padding-left:5px;font-size:12px;font-weight: bold;line-height:25px;margin:5px 5px;}
+.location a{color:#333;font-weight: lighter;}
+.location a:hover{color:#487acb;}
+.table_title{ background:url(../images/table_t_bg.gif) ; height:25px; border-top:1px solid #e6e4e4; border-bottom:1px solid #e6e4e4; font-weight:bold; text-align:center; font-size:12px;}
+.tabletitle {
+font-weight: bold;
+display: block;
+font-size: 12px;
+color: #333333;
+border-bottom:1px #ccc dashed;
+line-height:200%;
+vertical-align:middle;
+}
+
+.table_content{font-size:12px; border-bottom:1px dashed #ccc;vertical-align:middle; line-height:200%; color:#999;}
+.error_msg {
+	font-size: 12px;
+	color: #FF0000;
+}
+.word_content {
+	font-size: 12px;
+}
+/*左侧菜单列表
+=====================================================*/
+ul{
+margin: 0;
+padding: 0;
+list-style: none;
+}
+
+#treenav {
+margin: 0px;
+text-align: left;
+}
+
+#treenav ul li {
+margin: 1px 0;
+font-size: 12px;
+}
+
+#treenav ul.expanded {
+display: block;
+}
+
+#treenav ul.expanded,#treenav ul.collapsed {
+margin: 5px 0px 5px 5px;
+}
+
+#treenav ul.collapsed {
+display: none;
+}
+
+.expanded li,.collapsed li{
+/*border-bottom: 1px dashed #CCCCCC;*/
+width: 130px;
+background:url(../images/listmenu_icon2.gif) no-repeat ;
+padding:0 0 0 10px;
+}
+
+.listhead {
+font-weight: bold;
+display: block;
+font-size: 12px;
+color: #333333;
+/*background: #F1F1F1;*/
+padding: 0 20px;
+width: 135px;
+margin: 5px 0;
+background:url(../images/icon_menu.gif) 0 0px no-repeat ;
+}
+
+
+#treenav a {
+text-decoration: none;
+color:#666; 
+}
+
+#treenav a:hover {
+color: #ccc;
+}
+#treenav a.listhead { color: #000;text-decoration:none;}
+#treenav a.listhead:hover{ color:#666;}
+
+/*Other
+=====================================================*/
+.sort_name{
+text-align:left;
+float:left;
+width:160px;
+font-weight:lighter;
+}
+.long_sort_name{
+text-align:left;
+float:left;
+width:220px;
+font-weight:lighter;
+}
+h1{font-size:12px;}
