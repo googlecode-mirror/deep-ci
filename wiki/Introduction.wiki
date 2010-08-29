@@ -1,6 +1,7 @@
 = 基础源文件 =
  * MVC Farmwork CodeIgniter-1.7.2.zip
  * ORM Doctrine-1.2.2.tgz
+ * Javascript based jquery-1.4.2.min.js
 
 = 所作的修改 =
  * 使用 User_controller 來代替 User (controller 名稱)
