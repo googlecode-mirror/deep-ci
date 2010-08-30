@@ -5,11 +5,6 @@
  * 整合Doctrine, codeigniter->pagination 的分頁類
  * Doctrine_Pager 用來查詢，并統計
  * pagination 用來生成html
- *
- *	//$q->fetchOne(); //return object
- *	//$q->execute();
- *	//$q->execute()->toArray();
- *	//$q->getSqlQuery();
  */
 class PageBar
 {
