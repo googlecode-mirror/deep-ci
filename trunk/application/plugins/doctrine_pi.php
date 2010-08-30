@@ -25,7 +25,7 @@ foreach ($db as $connection_name => $db_values) {
 }
 
 // CodeIgniter's Model class needs to be loaded
-require_once BASEPATH.'/libraries/Model.php';
+# require_once BASEPATH.'/libraries/Model.php';
 
 
 //set charSet
@@ -34,6 +34,7 @@ Doctrine_Manager::getInstance()->getCurrentConnection()->setCharset($db['default
 // set to use modelsAutoload.
 spl_autoload_register(array('Doctrine_Core', 'modelsAutoload'));
 
+// Set the model loading to conservative/lazy loading
 Doctrine_Manager::getInstance()->setAttribute(Doctrine_Core::ATTR_MODEL_LOADING, Doctrine_Core::MODEL_LOADING_CONSERVATIVE);
 
 
