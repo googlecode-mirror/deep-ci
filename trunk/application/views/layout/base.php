@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>搜索排行</title>
+<title>deep-ci</title>
 
 <script type="text/javascript" src="<?=js_url()?>lib/jquery-1.4.2.min.js"></script>
 <script type="text/javascript" src="<?=js_url()?>common.js"></script>
@@ -53,10 +53,11 @@ if(!empty($_loadJs)) {
 		<a href="<?=site_url('member')?>"><?=$member->username?></a>， 歡迎登陸！ <a href="<?=site_url('member/logout')?>">登出</a>。
 		<?php }?>
 		</th>
-        <th class="menu" style="border:0;"><a href="<?=site_url()?>">首页</a> | <a href="<?=site_url('rank')?>">管理KeyWord</a> | <a href="<?=site_url('rank_group')?>">管理群組</a></th>
+        <th class="menu" style="border:0;"><a href="<?=site_url()?>">首页</a></th>
 	</tr>
 </table>
 <?php echo $content_for_layout?>
 </div>
+<div style="text-align:center; color:#666;">Page rendered in {elapsed_time} seconds</div>
 </body>
 </html>
