@@ -30,3 +30,4 @@
  
 = 一些规定 =
  * 數據庫都自增1字段都 命名為 id，其他以單詞+下劃綫
+ * views目錄下文件都是以 訪問名稱（member 而不是 member_controller）+ function名稱命名。例如member_list.php
