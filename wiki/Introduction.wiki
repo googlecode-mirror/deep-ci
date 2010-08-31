@@ -21,6 +21,13 @@
  * Doctrine 原始文件 移動到 system下面
  * Doctrine 配置，预先加載 models/generated
  * Doctrine modelsAutoload (http://www.doctrine-project.org/projects/orm/1.2/docs/manual/introduction-to-models/en#autoloading-models) 
+ * Doctrine getBySegment() 函數。
+
+{{{
+#etBySegment() 函數使用方法
+Doctrine_Core::getTable('Member')->getBySegment(3);
+#如果url 是 /member/info/4 , 则会直接查找id为4的会员。
+}}}
  
  * 新增 PageBar功能
  * 新增 PageBarSession 存放搜索條件
