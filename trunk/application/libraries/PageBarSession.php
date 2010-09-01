@@ -59,13 +59,28 @@ class PageBarSession
 	private static function set($data)
 	{
 		$pageKeyName = self::getPageKeyName();
+		
+		if(!empty($_SESSION['PageBarData'][$pageKeyName]))
+			$da2 = $_SESSION['PageBarData'][$pageKeyName];
+		else 
+			$da2 = array();
+		
+		$data = array_merge($da2,$data);
 		$_SESSION['PageBarData'][$pageKeyName] = $data;
 	}
 	
 	private static function clean()
 	{
 		$pageKeyName = self::getPageKeyName();
-		$_SESSION['PageBarData'][$pageKeyName] = array();
+		
+		$data = $_SESSION['PageBarData'][$pageKeyName];
+		$da = array();
+		foreach($data as $k=>$v) {
+			if(preg_match('/^\_/i',$k))
+				$da[$k] = $v;
+		}
+		
+		$_SESSION['PageBarData'][$pageKeyName] = $da;
 	}
 	
 	private static function getPageKeyName()
@@ -93,8 +108,7 @@ class PageBarSession
 	
 	private static function setPerPage($perPage)
 	{
-		$pageKeyName = self::getPageKeyName();
-		$data = $_SESSION['PageBarData'][$pageKeyName];
+		$data = array();
 		$data['_perPage'] = $perPage;
 		
 		self::set($data);
