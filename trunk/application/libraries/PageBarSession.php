@@ -1,73 +1,79 @@
 <?php
-
+/**
+ * 使用静态函数，变量
+ *
+ * 增加默认function 名称。
+ * 增加 prePage 变动(每页显示多少行)。
+ * 增加 getLastUri(), 最后访问的路径。
+ *
+ * version 1.2
+ */
 class PageBarSession
 {
-	private static $indexFunction = 'index';
+	private static $indexFunction	= 'index';
+	private static $inited			= false;
+	private static $pageKeyName		= '';
 	
-	public function __construct()
-	{		
+	/**
+	 * 判断_GET,_POST数据, 只执行一次
+	 */
+	private function init()
+	{
+		if(self::$inited==true)
+			return;
+
 		parse_str($_SERVER['QUERY_STRING'],$_GET);
-		if(@$_GET['act']=='clean')
+		if(!empty($_GET['act'])&&$_GET['act']=='clean')
 			//清空查询条件
-			$this->clean();
+			self::clean();
 		elseif(!empty($_POST)) {
 			//设置查询条件
-			$this->set($_POST);
+			self::set($_POST);
+		}
+		
+		if(!empty($_GET['perpage'])) {
+			self::setPerPage($_GET['perpage']);
 		}
 		
 		//设置最后访问Uri
-		$this->setLastUri();
+		self::setLastUri();
+		
+		//设置已经执行 init
+		self::$inited = true;
 	}
 	
-	public function get()
+	/**
+	 * 获取搜索等数据
+	 */
+	public static function get()
 	{
-		$keyName = self::getKeyName();
-		$data = @$_SESSION['PageBarData'][$keyName];
+		self::init();
+		
+		$pageKeyName = self::getPageKeyName();
+		$data = @$_SESSION['PageBarData'][$pageKeyName];
 		if(empty($data)) $data = array();
 		
 		return new PageBarSessionData($data);
 	}
 	
-	public function set($data)
+	private static function set($data)
 	{
-		$keyName = self::getKeyName();
-		$_SESSION['PageBarData'][$keyName] = $data;
+		$pageKeyName = self::getPageKeyName();
+		$_SESSION['PageBarData'][$pageKeyName] = $data;
 	}
 	
-	public function clean()
+	private static function clean()
 	{
-		$keyName = self::getKeyName();
-		$_SESSION['PageBarData'][$keyName] = array();
+		$pageKeyName = self::getPageKeyName();
+		$_SESSION['PageBarData'][$pageKeyName] = array();
 	}
 	
-	public function setLastUri()
+	private static function getPageKeyName()
 	{
-		$keyName = self::getKeyName();
-		if(empty($_SESSION['PageBarData'][$keyName]))
-			$_SESSION['PageBarData'][$keyName] = array();
-		$_SESSION['PageBarData'][$keyName]['_lastUri'] = $_SERVER['REQUEST_URI'];
-	}
-	
-	public static function getLastUri($url)
-	{
-		$url = tirm($url,' /');
-		$arr = explode('/'.$url);
+		if(!empty(self::$pageKeyName))
+			return self::$pageKeyName;
 		
-		$fir = $url[0];
-		$sed = empty($url[1]) ? self::$indexFunction : $url[1];
-		
-		if(in_array($fir,array('admin','member'))) {
-			$thr = empty($url[2]) ? self::$indexFunction : $url[2];
-			$keyName = $fir.'_'.$sed.'_'.$thr;
-		} else {
-			$keyName = $fir.'_'.$sed;
-		}
-		
-		return $_SESSION['PageBarData'][$keyName]['_lastUri'];
-	}
-	
-	public static function getKeyName()
-	{
+		/** 计算出pageKeyName **/
 		$CI = & get_instance();
 		
 		$fir = $CI->uri->segment(1);
@@ -77,9 +83,60 @@ class PageBarSession
 		if(in_array($fir,array('admin','member'))) {
 			$thr = $CI->uri->segment(3);
 			if(empty($thr)) $thr = self::$indexFunction;
-			return $fir.'_'.$sed.'_'.$thr;
+			$pageKeyName = $fir.'_'.$sed.'_'.$thr;
 		} else
-			return $fir.'_'.$sed;
+			$pageKeyName = $fir.'_'.$sed;
+		
+		self::$pageKeyName = $pageKeyName;
+		return $pageKeyName;
+	}
+	
+	private static function setPerPage($perPage)
+	{
+		$pageKeyName = self::getPageKeyName();
+		$data = $_SESSION['PageBarData'][$pageKeyName];
+		$data['_perPage'] = $perPage;
+		
+		self::set($data);
+	}
+	
+	public static function getPerPage($perPage)
+	{
+		$sData = self::get();
+		if(empty($sData->_perPage)) {
+			self::setPerPage($perPage);
+			return $perPage;
+		} else 
+			return $sData->_perPage;
+	}
+	
+	private static function setLastUri()
+	{
+		$pageKeyName = self::getPageKeyName();
+		if(empty($_SESSION['PageBarData'][$pageKeyName]))
+			$_SESSION['PageBarData'][$pageKeyName] = array();
+		$_SESSION['PageBarData'][$pageKeyName]['_lastUri'] = 'http://'.$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
+	}
+	
+	public static function getLastUri($url)
+	{
+		$url = trim($url,' /');
+		if(strstr($url,'/'))
+			$url = explode('/',$url);
+		else
+			$url = array($url);
+		
+		$fir = $url[0];
+		$sed = empty($url[1]) ? self::$indexFunction : $url[1];
+		
+		if(in_array($fir,array('admin','member'))) {
+			$thr = empty($url[2]) ? self::$indexFunction : $url[2];
+			$pageKeyName = $fir.'_'.$sed.'_'.$thr;
+		} else {
+			$pageKeyName = $fir.'_'.$sed;
+		}
+
+		return $_SESSION['PageBarData'][$pageKeyName]['_lastUri'];
 	}
 }
 

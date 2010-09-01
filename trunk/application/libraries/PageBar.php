@@ -5,13 +5,16 @@
  * 整合Doctrine, codeigniter->pagination 的分頁類
  * Doctrine_Pager 用來查詢，并統計
  * pagination 用來生成html
+ *
  */
 class PageBar
 {
-	var $base_url;
-	var $uri_segment = 3;
-	var $per_page = 12;
-	var $returnType = 'object'; //return obj or array, array maybe faster and obj is quick for develop.
+	private $base_url;
+	private $uri_segment	= 3;
+	private $per_page		= 12;
+	private $returnType		= 'object'; //return obj or array
+	
+	const PERPAGE_CHANGE	= 'PerPageChange'; 
 	
 	function setBaseUrl($base_url)
 	{
@@ -20,11 +23,19 @@ class PageBar
 		return $this;
 	}
 	
-	function setPerPage($per_page)
+	function setPerPage($per_page,$prePageChange='')
 	{
-		$this->per_page = $per_page;
+		if($prePageChange==self::PERPAGE_CHANGE) {
+			$per_page = PageBarSession::getPerPage($per_page);
+		}
 		
+		$this->per_page = $per_page;
 		return $this;
+	}
+	
+	function getPerPage()
+	{
+		return $this->per_page;
 	}
 	
 	function setUriSegment($uri_segment)
@@ -65,6 +76,8 @@ class PageBar
 		$config['total_rows']	= $pager->getNumResults();
 		
 		$config['first_link']	= '&lsaquo; 首頁';
+		$config['next_link'] 	= '下頁 &#187;';
+		$config['prev_link'] 	= '&#171; 上頁';
 		$config['last_link'] 	= '末頁 &rsaquo;';
 		
 		$CI->load->library('pagination');
