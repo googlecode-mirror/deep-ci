@@ -70,9 +70,12 @@ class JSClass
 		else
 		{
 			echo "<HTML>\n<HEAD>\n<TITLE>  </TITLE>\n<meta http-equiv=\"Content-Type\"  content=\"text/html; charset={$this -> Charset}\">\n</HEAD>\n<BODY>\n";
-			echo "<Script Language=\"Javascript\">".$Target.".location=\"".site_url($URL)."\"</Script>";
+			if(!preg_match('/^http\:\/\//i',$URL)) $URL = site_url($URL);
+			echo "<Script Language=\"Javascript\">".$Target.".location=\"".$URL."\"</Script>";
 		    echo "\n</body></html>";
 		}
 	}
+	
+	//function goto
 	
 }
