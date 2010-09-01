@@ -1,10 +1,10 @@
 <?php
 /**
- * Ê¹ÓÃ¾²Ì¬º¯Êı£¬±äÁ¿
+ * ä½¿ç”¨é™æ€å‡½æ•°ï¼Œå˜é‡
  *
- * Ôö¼ÓÄ¬ÈÏfunction Ãû³Æ¡£
- * Ôö¼Ó prePage ±ä¶¯(Ã¿Ò³ÏÔÊ¾¶àÉÙĞĞ)¡£
- * Ôö¼Ó getLastUri(), ×îºó·ÃÎÊµÄÂ·¾¶¡£
+ * å¢åŠ é»˜è®¤function åç§°ã€‚
+ * å¢åŠ  prePage å˜åŠ¨(æ¯é¡µæ˜¾ç¤ºå¤šå°‘è¡Œ)ã€‚
+ * å¢åŠ  getLastUri(), æœ€åè®¿é—®çš„è·¯å¾„ã€‚
  *
  * version 1.2
  */
@@ -15,7 +15,7 @@ class PageBarSession
 	private static $pageKeyName		= '';
 	
 	/**
-	 * ÅĞ¶Ï_GET,_POSTÊı¾İ, Ö»Ö´ĞĞÒ»´Î
+	 * åˆ¤æ–­_GET,_POSTæ•°æ®, åªæ‰§è¡Œä¸€æ¬¡
 	 */
 	private function init()
 	{
@@ -24,10 +24,10 @@ class PageBarSession
 
 		parse_str($_SERVER['QUERY_STRING'],$_GET);
 		if(!empty($_GET['act'])&&$_GET['act']=='clean')
-			//Çå¿Õ²éÑ¯Ìõ¼ş
+			//æ¸…ç©ºæŸ¥è¯¢æ¡ä»¶
 			self::clean();
 		elseif(!empty($_POST)) {
-			//ÉèÖÃ²éÑ¯Ìõ¼ş
+			//è®¾ç½®æŸ¥è¯¢æ¡ä»¶
 			self::set($_POST);
 		}
 		
@@ -35,15 +35,15 @@ class PageBarSession
 			self::setPerPage($_GET['perpage']);
 		}
 		
-		//ÉèÖÃ×îºó·ÃÎÊUri
+		//è®¾ç½®æœ€åè®¿é—®Uri
 		self::setLastUri();
 		
-		//ÉèÖÃÒÑ¾­Ö´ĞĞ init
+		//è®¾ç½®å·²ç»æ‰§è¡Œ init
 		self::$inited = true;
 	}
 	
 	/**
-	 * »ñÈ¡ËÑË÷µÈÊı¾İ
+	 * è·å–æœç´¢ç­‰æ•°æ®
 	 */
 	public static function get()
 	{
@@ -88,7 +88,7 @@ class PageBarSession
 		if(!empty(self::$pageKeyName))
 			return self::$pageKeyName;
 		
-		/** ¼ÆËã³öpageKeyName **/
+		/** è®¡ç®—å‡ºpageKeyName **/
 		$CI = & get_instance();
 		
 		$fir = $CI->uri->segment(1);
