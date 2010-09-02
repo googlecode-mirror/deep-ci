@@ -11,8 +11,7 @@ body {
 	font-size:12px;
 }
 input{background:#FFFFFF; border:1px #cccccc solid; color:#666666;}
-a { color:#4493d6; text-decoration:none;}
-a:hover{ color:#fff;text-decoration: underline;}a:visited {color: #666666;text-decoration: underline;}
+a { color:#4493d6; text-decoration:none;}a:visited {color: #666666;text-decoration: underline;}a:hover{ text-decoration: underline;}
 
 /*首頁樣式
 =============================================================================*/

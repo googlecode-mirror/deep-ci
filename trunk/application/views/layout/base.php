@@ -8,7 +8,9 @@
 <script type="text/javascript" src="<?=js_url()?>common.js"></script>
 <style type="text/css">
 body,td,th,a {font-size: 12px;}
-a {color: #000000;text-decoration: underline;}
+a{color:#4493D6; text-decoration:none;}
+a:visited{color:#666;text-decoration:underline;}
+a:hover{text-decoration:underline;}
 
 .tab_a {border-collapse:collapse;border:1px solid #A6D352;background:#FFF;width:93%; margin:5px auto; margin-bottom:10px;text-align:left; vertical-align:middle;}
 .tab_a td, .tab_a th{ line-height:25px; padding:1px 5px;border:1px solid #A6D352; }
