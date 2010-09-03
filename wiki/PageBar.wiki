@@ -1,0 +1,61 @@
+= 分页 =
+class PageBar。整合Doctrine, codeigniter->pagination 的分頁類。
+Doctrine_Pager 用來查詢，并統計。 pagination 用來生成html。
+
+{{{
+#query 
+$q = Doctrine_Query::create()
+		->from('Member')
+		->where($where)
+		->orderBy('id desc');
+
+$pageBar = new PageBar;
+$pageBar->setBaseUrl('member/index') //分页中的地址
+	->setPerPage(12) //每页显示多少行
+	->setUriSegment(3); 
+//第几页的开始字段，于codeigniter 结合 $CI->uri->segment()。
+//分页开始的字段 member/index/24， 
+
+list($items,$html) = $pageBar->get($q);
+//$items 返回的查询结果
+//$html 返回的pagebar html
+}}}
+
+== 控制显示条数 ==
+
+在页面中可以选择每页显示多少条。 数据存储到Session中， 使用到 PageBarSession
+
+{{{
+$pageBar = new PageBar;
+$pageBar->setBaseUrl('rank/index')
+		->setPerPage(12,PageBar::PERPAGE_CHANGE) //默认为12条，
+		->setUriSegment(3);
+list($items,$html) = $pageBar->get($q);
+
+##当下显示多少条
+$pageBar->getPerPage();
+}}}
+
+= 查询条件 =
+class PageBarSession 所有数据都根据使用 页面名称存储到Session。
+
+{{{
+$sData = PageBarSession::get();//取得查询条件
+$data['sData'] = $sData;
+
+//根据查询条件申城 where 語句
+$where = " member_id='{$member->id}'";
+if(!empty($sData->keyword))
+    $where .= " and keyword like '%{$sData->keyword}%'";
+}}}
+
+== 上次查询地址 ==
+
+{{{
+$url = PageBarSession::getLastUri('member/news');
+
+#在调用之前必须执行 
+$sData = PageBarSession::get();
+#或
+PageBarSession::init();
+}}}
