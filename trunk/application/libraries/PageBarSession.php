@@ -17,7 +17,7 @@ class PageBarSession
 	/**
 	 * 判断_GET,_POST数据, 只执行一次
 	 */
-	private function init()
+	public static function init()
 	{
 		if(self::$inited==true)
 			return;
