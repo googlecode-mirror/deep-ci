@@ -59,3 +59,37 @@ $sData = PageBarSession::get();
 #或
 PageBarSession::init();
 }}}
+
+= 例子 =
+一个完整的综合查询的例子
+
+{{{
+//查詢條件
+$sData = PageBarSession::get();
+$data['sData'] = $sData;
+
+//where 語句
+$where = " member_id='{$member->id}'";
+if(!empty($sData->keyword))
+	$where .= " and keyword like '%{$sData->keyword}%'";
+if(!empty($sData->url)&&$sData->url!='http://')
+	$where .= " and url like '%{$sData->url}%'";
+if(!empty($sData->group_id))
+	$where .= " and group_id = '{$sData->group_id}'";
+
+//分頁
+$q = Doctrine_Query::create()
+		->from('Rank')
+		->where($where)
+		->orderBy('id desc');
+
+$pageBar = new PageBar;
+$pageBar->setBaseUrl('rank/index')
+		->setPerPage(12,PageBar::PERPAGE_CHANGE)
+		->setUriSegment(3);
+list($items,$html) = $pageBar->get($q);
+
+$data['rankList'] = $items;
+$data['pageBar'] = $html;
+$data['perPage'] = $pageBar->getPerPage();
+}}}
