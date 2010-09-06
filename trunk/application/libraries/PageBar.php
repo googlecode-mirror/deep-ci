@@ -79,6 +79,7 @@ class PageBar
 		$config['next_link'] 	= '下頁 &#187;';
 		$config['prev_link'] 	= '&#171; 上頁';
 		$config['last_link'] 	= '末頁 &rsaquo;';
+		$config['num_links']	= 5;
 		
 		$CI->load->library('pagination');
 		$CI->pagination->initialize($config);
