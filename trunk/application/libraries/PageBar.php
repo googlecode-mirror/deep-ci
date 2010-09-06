@@ -45,9 +45,16 @@ class PageBar
 		return $this;
 	}
 	
-	function setReturn($return)
+	function returnArray()
 	{
-		$this->returnType = $return;
+		$this->returnType = 'array';
+		
+		return $this;
+	}
+	
+	function returnOjbect()
+	{
+		$this->returnType = 'object';
 		
 		return $this;
 	}
