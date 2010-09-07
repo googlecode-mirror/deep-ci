@@ -2815,13 +2815,21 @@ class Doctrine_Table extends Doctrine_Configurable implements Countable
 	 * use codeinteger segment as id,
 	 * and it is number.
 	 */
-	public function getBySegment($u=3,$URIRouting='')
+	public function getBySegment($u=3)
 	{
 		$CI =& get_instance();
-		if(empty($URIRouting))
-			$id = @$CI->uri->segment($u);
-		else
-			$id = @$CI->uri->rsegment($u);
+		$id = @$CI->uri->segment($u);
+		
+		if(!preg_match('/^[0-9]{1,}$/i',$id))
+			$id = 0;
+
+		return $this->find($id);
+	}
+	
+	public function getByRSegment($u=3)
+	{
+		$CI =& get_instance();
+		$id = @$CI->uri->rsegment($u);
 		
 		if(!preg_match('/^[0-9]{1,}$/i',$id))
 			$id = 0;
