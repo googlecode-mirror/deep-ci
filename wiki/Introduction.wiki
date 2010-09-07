@@ -40,10 +40,15 @@ Doctrine_Core::getTable('Member')->getBySegment(3);
  * 數據庫都自增1字段都 命名為 id，其他以單詞+下劃綫
  * views目錄下文件都是以 訪問名稱（member 而不是 member_controller）+ function名稱命名。例如member_list.php
 
-== Model功能合并还是分离 ==
+== Model功能，合并还是分离 ==
  * 合并调用起来方便， 但是不方便以后管理。
  * 分离，分离出新的model，调用的时候肯需要传递参数（obj or 数据）
 
 暂时如下
  * 小的功能呢简单的查询名称， 合并
  * 如果所涉及的或所需的操作过多，分离
+
+{{{
+model 于 model 之间是需要联系， 
+最终根据复杂程度来 判断是否需要分离
+}}}
