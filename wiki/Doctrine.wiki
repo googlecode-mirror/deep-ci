@@ -11,8 +11,10 @@ Doctrine_Core::getTable('Member')->findByKeyword($key);
 Doctrine_Core::getTable('Member')->find(1); // id 为 1 的会员。
 
 ## 于codeinteger 整合 
+//调用 $CI->uri->segment($u);
 Doctrine_Core::getTable('Member')->getBySegment(3); # /member/info/4 id为4的会员
 
+//调用 $CI->uri->rsegment($u);
 Doctrine_Core::getTable('News')->getByRSegment(3);# 使用 URI Routing 情况下读取字段 /news-12.html
 }}}
 
