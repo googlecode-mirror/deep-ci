@@ -31,7 +31,7 @@ redirect('/admin/', 'refresh');
  * Doctrine getBySegment() 函數。
 
 {{{
-#etBySegment() 函數使用方法
+#getBySegment() 函數使用方法
 Doctrine_Core::getTable('Member')->getBySegment(3);
 #如果url 是 /member/info/4 , 则会直接查找id为4的会员。
 }}}
