@@ -3,6 +3,13 @@
  * ORM Doctrine-1.2.2.tgz
  * Javascript based jquery-1.4.2.min.js
 
+=  CodeIgniter 一些備註 =
+{{{
+$CI =& get_instance();
+$CI->uri->segment($u);
+
+redirect('/admin/', 'refresh');
+}}}
 = 所作的修改 =
  * 使用 User_controller 來代替 User (controller 名稱)
  * 使用 ORM Doctrine
