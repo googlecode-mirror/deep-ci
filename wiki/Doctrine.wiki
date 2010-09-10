@@ -2,20 +2,20 @@
 
 {{{
 ## return one
-Doctrine_Core::getTable('Member')->findOneByKeyword($key); 
+Doctrine::getTable('Member')->findOneByKeyword($key); 
 
 ## return list
-Doctrine_Core::getTable('Member')->findByKeyword($key);
+Doctrine::getTable('Member')->findByKeyword($key);
 
 ## find by id
-Doctrine_Core::getTable('Member')->find(1); // id 为 1 的会员。
+Doctrine::getTable('Member')->find(1); // id 为 1 的会员。
 
 ## 于codeinteger 整合 
 //调用 $CI->uri->segment($u);
-Doctrine_Core::getTable('Member')->getBySegment(3); # /member/info/4 id为4的会员
+Doctrine::getTable('Member')->getBySegment(3); # /member/info/4 id为4的会员
 
 //调用 $CI->uri->rsegment($u);
-Doctrine_Core::getTable('News')->getByRSegment(3);# 使用 URI Routing 情况下读取字段 /news-12.html
+Doctrine::getTable('News')->getByRSegment(3);# 使用 URI Routing 情况下读取字段 /news-12.html
 }}}
 
 {{{
@@ -45,7 +45,7 @@ if($member) {
 = add, edit, delete =
 
 {{{
-$member = Doctrine_Core::getTable('Member')->find(1);
+$member = Doctrine::getTable('Member')->find(1);
 
 $member->save(); // add & edit
 $member->delete();//delete
