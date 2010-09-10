@@ -35,7 +35,7 @@ $q->getSqlQuery();// return SQL
 {{{
 ## 在查询一个的情况下 例如 find, findOne, fetchOne, getBySegment 
 ## 如果不存在 则返回 false
-$member = Doctrine_Core::getTable('Member')->find(1);
+$member = Doctrine::getTable('Member')->find(1);
 if($member) {
 	//do 
 }
