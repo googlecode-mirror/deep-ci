@@ -56,3 +56,32 @@ $q = Doctrine_Query::create()
 		->where('id = ?', $id);
 $q->execute();
 }}}
+
+= 表的关联 =
+
+ * 当不使用时，不会执行查询语句，并调用。当使用时 才会被调用
+ * 使用Left Join 语句是会自动调用
+
+{{{
+# $Rank->Member , 不调用时不会查询， 当调用时才会自动查询。
+$Rank->Member->usename;
+
+# left join 时调用 
+$q = Doctrine_Query::create()
+      ->from('Rank r')
+      ->leftJoin('r.Member m');
+}}}
+
+{{{
+$this->hasOne('Member', array(
+		'local' => 'member_id',
+		'foreign' => 'id'
+	)
+);
+
+$this->hasMany('Email', array(
+		'local' => 'id',
+		'foreign' => 'user_id'
+	)
+);
+}}}
