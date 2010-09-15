@@ -62,6 +62,8 @@ $q->execute();
  * 当不使用时，不会执行查询语句，并调用。当使用时 才会被调用
  * 使用Left Join 语句是会自动调用
 
+一些经验：　使用起来，感觉单独使用hasOne可以很方便，hasMany 在单独使用的时候感觉比较别扭。 不过在leftJoin的情况下除外。
+
 {{{
 # $Rank->Member , 不调用时不会查询， 当调用时才会自动查询。
 $Rank->Member->usename;
