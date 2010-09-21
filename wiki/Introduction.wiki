@@ -55,7 +55,4 @@ Doctrine_Core::getTable('Member')->getBySegment(3);
  * 小的功能呢简单的查询名称， 合并
  * 如果所涉及的或所需的操作过多，分离
 
-{{{
-model 于 model 之间是需要联系， 
-最终根据复杂程度来 判断是否需要分离
-}}}
+model 于 model 之间是需要联系，最终根据复杂程度来 判断是否需要分离
