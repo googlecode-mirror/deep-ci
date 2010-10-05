@@ -1,3 +1,8 @@
+= 宗旨 =
+方便、实用 是生存下去的基石。
+
+方便调用、实现其他没有的功能。 这些是最基本的。
+
 = 基础源文件 =
  * MVC Farmwork CodeIgniter-1.7.2.zip
  * ORM Doctrine-1.2.2.tgz
