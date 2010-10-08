@@ -61,3 +61,8 @@ Doctrine_Core::getTable('Member')->getBySegment(3);
  * 如果所涉及的或所需的操作过多，分离
 
 model 于 model 之间是需要联系，最终根据复杂程度来 判断是否需要分离
+
+== 简化html中php代码的思考 ==
+CodeIgniter 中的view 是直接使用php代码的。 但应简化view的php code。
+
+if语句、基本的函数(date,trim)、 感觉是可以使用的。
