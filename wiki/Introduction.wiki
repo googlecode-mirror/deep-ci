@@ -55,6 +55,7 @@ Doctrine_Core::getTable('Member')->getBySegment(3);
  * 數據庫都自增1字段都 命名為 id，其他以單詞+下劃綫
  * 數據庫字段以小寫字母開頭，其他單詞大寫。
  * 數據庫中儘量避免使用 NULL
+ * 时间字段使用 datetime 类型。数据量过大时在考虑转换成int类型。
  * views目錄下文件都是以 訪問名稱（member 而不是 member_controller）+ function名稱命名。例如member_list.php
 
 == Model功能，合并还是分离 ==
