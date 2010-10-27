@@ -112,5 +112,6 @@ $q = Doctrine_Query::create()
 	->where("rank_id={$this->id}")
 	->orderBy('rank_order desc')
 	->limit(2)
-	->useResultCache(true);
+	->useResultCache(true)
+	->setResultCacheLifeSpan(3600);
 }}}
