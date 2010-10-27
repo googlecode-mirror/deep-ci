@@ -87,3 +87,26 @@ $this->hasMany('Email', array(
 	)
 );
 }}}
+
+= Cache =
+ORM确实方便开发，但是当使用过多的 使用复杂的数据关系，以及调用过多的查询相关，会明显慢下来。
+
+* 数据使用一个Sql语句查询。不在依赖定义的关系。
+* 使用Cache。
+{{{
+// 定义
+$cacheConn = Doctrine_Manager::connection(new PDO('sqlite:'.VARPATH.'/cache.sqlite'));
+$cacheDriver = new Doctrine_Cache_Db(array('connection' => $cacheConn, 'tableName' => 'cache'));
+//$cacheDriver->createTable();//第一次使用时执行。
+
+Doctrine_Manager::getInstance()->setAttribute(Doctrine_Core::ATTR_RESULT_CACHE, $cacheDriver);
+Doctrine_Manager::getInstance()->setAttribute(Doctrine::ATTR_RESULT_CACHE_LIFESPAN, 1800);
+
+// 使用
+$q = Doctrine_Query::create()
+	->from('RankLog')
+	->where("rank_id={$this->id}")
+	->orderBy('rank_order desc')
+	->limit(2)
+	->useResultCache(true);
+}}}
