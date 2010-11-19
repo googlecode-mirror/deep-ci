@@ -30,6 +30,19 @@ $q->execute()->toArray(); //return array
 $q->getSqlQuery();// return SQL
 }}}
 
+=== 直接使用SQL ===
+为了性能及优化，可以直接使用SQL
+
+{{{
+$con = Doctrine_Manager::getInstance()->connection();
+
+// Execute SQL query, receive Doctrine_Connection_Statement
+$st = $con->execute("select * from member");
+
+// Fetch query result
+$result = $st->fetchAll();
+}}}
+
 == 判断返回值 ==
 
 {{{
