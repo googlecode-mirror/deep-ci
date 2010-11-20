@@ -31,16 +31,37 @@ $q->getSqlQuery();// return SQL
 }}}
 
 === 直接使用SQL ===
-为了性能及优化，可以直接使用SQL
+为了性能方面的优化，可以直接使用SQL
 
 {{{
+//Note: If you want to select a specific connection first, then call:
+//Doctrine_Manager::getInstance()->setCurrentConnection(’your_connection_name_1′);
+// Get Doctrine_Connection object
+
 $con = Doctrine_Manager::getInstance()->connection();
 
 // Execute SQL query, receive Doctrine_Connection_Statement
-$st = $con->execute("select * from member");
+
+$st = $con->execute("your sql");
 
 // Fetch query result
+
 $result = $st->fetchAll();
+}}}
+
+=== Doctrine_RawSql  ===
+官方手册提供的，执行Native SQL的方法。其他的暂不知。持保留态度。
+
+{{{
+$conn = Doctrine_Manager::connection();
+$q = new Doctrine_RawSql($conn);
+
+$q->select('{u.*}')
+  ->from('user u')
+  ->addComponent('u', 'User');
+
+$users = $q->execute();
+print_r($users->toArray());
 }}}
 
 == 判断返回值 ==
