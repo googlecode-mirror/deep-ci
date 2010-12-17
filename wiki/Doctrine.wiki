@@ -40,12 +40,13 @@ $q->getSqlQuery();// return SQL
 
 $con = Doctrine_Manager::getInstance()->connection();
 
-// Execute SQL query, receive Doctrine_Connection_Statement
+// SQL 
+$sql = "select * from product";
 
-$st = $con->execute("your sql");
+// Execute SQL query, receive Doctrine_Connection_Statement
+$st = $con->execute($sql);
 
 // Fetch query result
-
 $result = $st->fetchAll();
 }}}
 
