@@ -19,7 +19,7 @@
 | To fixt use new orm, Doctrine
 |
 */
-	@ini_set('memory_limit', '64M');
+	@ini_set('memory_limit', '16M');
 	
 /*
 |---------------------------------------------------------------
