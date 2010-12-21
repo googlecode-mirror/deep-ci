@@ -320,7 +320,7 @@ class CI_Profiler {
 		$output .= '<legend style="color:#995300;">&nbsp;&nbsp;'.$this->CI->lang->line('profiler_controller_info').'&nbsp;&nbsp;</legend>';
 		$output .= "\n";
 		
-		$output .= "<div style='color:#995300;font-weight:normal;padding:4px 0 4px 0'>".$this->CI->router->controller_name()."/".$this->CI->router->fetch_method()."</div>";				
+		$output .= "<div style='color:#995300;font-weight:normal;padding:4px 0 4px 0'>".$this->CI->router->fetch_class()."/".$this->CI->router->fetch_method()."</div>";				
 
 		
 		$output .= "</fieldset>";
