@@ -1,12 +1,17 @@
-= 宗旨 =
-方便、实用 是生存下去的基石。
+= 简介 =
+这不是一个新的Framwork。
 
-方便调用、实现其他没有的功能。 这些是最基本的。
+是工作中为了方便快速的开发、基本功能的重用的总结。
+
+是PHP中使用ORM快速开发的实践。
+
+=== 宗旨 ===
+方便、实用 是生存下去的基石。方便调用，基本的常用功能。
 
 = 基础源文件 =
- * MVC Farmwork CodeIgniter-1.7.3.zip
- * ORM Doctrine-1.2.3.tgz
- * Javascript based jquery-1.4.4.min.js
+ * MVC Farmwork CodeIgniter
+ * ORM Doctrine
+ * Javascript based Jquery
 
 =  CodeIgniter 一些備註 =
 {{{
