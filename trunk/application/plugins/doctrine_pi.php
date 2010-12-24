@@ -31,15 +31,16 @@ foreach ($db as $connection_name => $db_values) {
 //set charSet
 Doctrine_Manager::getInstance()->getCurrentConnection()->setCharset($db['default']['char_set']);
 
-// set to use modelsAutoload.
-spl_autoload_register(array('Doctrine_Core', 'modelsAutoload'));
-
 // Set the model loading to conservative/lazy loading
 Doctrine_Manager::getInstance()->setAttribute(Doctrine_Core::ATTR_MODEL_LOADING, Doctrine_Core::MODEL_LOADING_CONSERVATIVE);
 
 
 // telling Doctrine where our models are located 
 Doctrine_Core::loadModels(APPPATH.'models/generated');
-Doctrine_Core::loadModels(APPPATH.'models');
+//Doctrine_Core::loadModels(APPPATH.'models');
+
+// set to use modelsAutoload.
+Doctrine_Core::setModelsDirectory(APPPATH.'models');
+spl_autoload_register(array('Doctrine_Core', 'modelsAutoload'));
 
 

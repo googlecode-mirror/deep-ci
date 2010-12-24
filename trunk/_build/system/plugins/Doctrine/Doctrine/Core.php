@@ -1151,7 +1151,15 @@ class Doctrine_Core
                 require $class;
 
                 return true;
-            }
+            } else {
+				$loadedModels = self::$_loadedModelFiles;
+
+				if (isset($loadedModels[$className]) && file_exists($loadedModels[$className])) {
+					require $loadedModels[$className];
+
+					return true;
+				}
+			}
         }
 
         return false;
