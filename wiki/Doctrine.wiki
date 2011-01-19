@@ -24,7 +24,7 @@ $q = Doctrine_Query::create()
 		->from('RankGroup')
 		->where("member_id='{$member->id}'")
 		->orderBy('id');
-$q->fetchOne(); //return one
+$q->fetchOne(); // *return one or null*
 $q->execute();
 $q->execute()->toArray(); //return array
 $q->getSqlQuery();// return SQL
