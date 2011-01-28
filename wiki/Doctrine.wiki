@@ -1,3 +1,19 @@
+= Result =
+这里讨论一些 搜索(Select语句)后返回的结果。
+
+
+$res = $q->fetchOne(); 和 $res = $q->execute(); 返回的都是对象。
+$res->id 也是对象。
+
+当没有结果时，  $q->fetchOne(); 返回 空NULL。 $q->execute();  返回一个对象。
+
+所以 判断是否为空可以
+{{{
+$res->toArray(); //然后在判断
+$res->get('id'); //真是的得到一个值。
+}}}
+
+
 = Search = 
 
 {{{
