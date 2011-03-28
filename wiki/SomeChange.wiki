@@ -2,6 +2,7 @@
 
 textarea 多出來換行為題
 
+~/system/core/Input.php 文件中
 {{{
 $str = str_replace(array("\r\n", "\r"), PHP_EOL, $str);
 }}}
