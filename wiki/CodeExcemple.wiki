@@ -1,0 +1,28 @@
+= PhpCode =
+
+{{{
+if ( ! class_exists($class)
+	OR strncmp($method, '_', 1) == 0
+	OR in_array(strtolower($method), array_map('strtolower', get_class_methods('CI_Controller')))
+	)
+{
+	show_404("{$class}/{$method}");
+}
+}}}
+
+{{{
+if ($this->_allow_get_array == FALSE)
+{
+	$_GET = array();
+}
+else
+{
+	if (is_array($_GET) AND count($_GET) > 0)
+	{
+		foreach ($_GET as $key => $val)
+		{
+			$_GET[$this->_clean_input_keys($key)] = $this->_clean_input_data($val);
+		}
+	}
+}
+}}}
