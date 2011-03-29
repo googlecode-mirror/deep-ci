@@ -139,6 +139,22 @@ $this->hasMany('Email', array(
 );
 }}}
 
+== 多對多 ==
+
+local 是 本類id 對應 PdoVirtualHostM表中的字段
+
+foreign 是 對應表的id 對應 PdoVirtualHostM表中的字段
+{{{
+$this->hasMany('PdoVirtualHostServer as Servers', array(
+		'refClass' => 'PdoVirtualHostM',
+		'local' => 'virtual_host_id',
+		'foreign' => 'virtual_host_server_id'
+	)
+);
+}}}
+
+
+
 = Cache =
 ORM确实方便开发，但是当使用过多的 使用复杂的数据关系，以及调用过多的查询相关，会明显慢下来。
 
