@@ -162,6 +162,12 @@ $m->Servers[0] = $virtualHostServer;
 $m->save();
 }}}
 
+清除關聯
+{{{
+$member->unlink('VirtualHostServers');
+$member->save();
+}}}
+
 = Cache =
 ORM确实方便开发，但是当使用过多的 使用复杂的数据关系，以及调用过多的查询相关，会明显慢下来。
 
