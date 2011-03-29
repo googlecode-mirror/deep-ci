@@ -28,6 +28,13 @@ for ($i = 0; $i < 10; $i++)
 }
 }}}
 
+{{{
+if ($foo OR $bar)
+if ($foo && $bar) // 推荐
+if ( ! $foo)
+if ( ! is_array($foo))
+}}}
+
 = PhpCode =
 
 {{{
