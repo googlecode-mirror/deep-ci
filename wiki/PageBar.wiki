@@ -12,7 +12,7 @@ $q = Doctrine_Query::create()
 $pageBar = new PageBar;
 $pageBar->setBaseUrl('member/index') //分页中的地址
 	->setPerPage(12) //每页显示多少行
-	->setUriSegment(3); 
+	->setOffset($offset); // setUriSegment(3) 是舊的方式，
 //第几页的开始字段，于codeigniter 结合 $CI->uri->segment()。
 //分页开始的字段 member/index/24， 
 
