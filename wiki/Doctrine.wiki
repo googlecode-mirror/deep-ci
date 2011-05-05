@@ -26,7 +26,10 @@ Doctrine::getTable('Member')->findByKeyword($key);
 ## find by id
 Doctrine::getTable('Member')->find(1); // id 为 1 的会员。
 
-## 于codeinteger 整合 
+## find all
+Doctrine::getTable('Member')->findAll();
+
+## 于codeinteger 整合 此部分于CI2.0舍去 
 //调用 $CI->uri->segment($u);
 Doctrine::getTable('Member')->getBySegment(3); # /member/info/4 id为4的会员
 
