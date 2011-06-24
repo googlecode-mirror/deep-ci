@@ -1,0 +1,1 @@
+<?phpinterface DeepCI_Validation_PdoInterface{	public function validation();}
