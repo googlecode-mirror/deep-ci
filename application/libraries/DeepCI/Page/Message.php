@@ -6,18 +6,30 @@
  */
 class DeepCI_Page_Message
 {
-	public static function Notice($url, $msg, $autoHide=true)
+	public static function Notice($url, $msg, $autoHide='')
 	{
+		if ($autoHide=='') {
+			$autoHide = true;
+		}
+		
 		self::_save('notice',$url,$msg,$autoHide);
 	}
 	
-	public static function Success($url, $msg, $autoHide=true)
+	public static function Success($url, $msg, $autoHide='')
 	{
+		if ($autoHide=='') {
+			$autoHide = true;
+		}
+		
 		self::_save('success',$url,$msg,$autoHide);
 	}
 	
-	public static function Error($url, $msg, $autoHide=false)
+	public static function Error($url, $msg, $autoHide='')
 	{
+		if ($autoHide=='') {
+			$autoHide = false;
+		}
+		
 		self::_save('error',$url,$msg,$autoHide);
 	}
 	
@@ -27,6 +39,17 @@ class DeepCI_Page_Message
 		$data		= array('type'=>$type,'msg'=>$msg,'autoHide'=>$autoHide);
 		
 		$_SESSION['_page_message_data'] = $data;
+		
+		//
+		if(strpos($url,'/')!==0) {
+			$CI =& get_instance();
+			$uri =& $CI->uri;
+			
+			if(empty($uri->segments[1]))
+				$url = $uri->rsegments[1].'/'.$url;
+			else
+				$url = $uri->segments[1].'/'.$uri->rsegments[1].'/'.$url;
+		}
 		
 		redirect($url);
 	}
@@ -63,6 +86,6 @@ class DeepCI_Page_Message
 				break;
 		}
 		
-		echo $str_begin.$str.$str_end;
+		return $str_begin.$str.$str_end;
 	}
 }
