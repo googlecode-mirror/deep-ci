@@ -4,6 +4,33 @@
   </tr>
 </tbody></table>
 
+<form action="<?=site_url('admin/member')?>" method="post">
+<table class="tab tab_content autoClass">
+  <tr>
+	<th width="15%" class="tal">搜索</th>
+	<th width="35%">&nbsp;</th>
+	<th width="15%">&nbsp;</th>
+	<th>&nbsp;</th>
+  </tr>
+  <tr>
+	<td>username</td>
+	<td><input type="text" name="username__like" value="<?=$sData->get('username')?>"></td>
+	<td>passowrd</td>
+	<td><input type="text" name="passowrd__like" value="<?=$sData->get('passowrd')?>"></td>
+  </tr>
+  <tr>
+	<td>email</td>
+	<td><input type="text" name="email__like" value="<?=$sData->get('email')?>"></td>
+	<td>create_date</td>
+	<td><input type="text" name="create_date__like" value="<?=$sData->get('create_date')?>"></td>
+  </tr>
+  <tr>
+	<td></td>
+	<td colspan="3"><input type="submit" value="提交">  <input type="button" value="清除" class="search_clean"></td>
+  </tr>
+</table>
+</form>
+
 <table id="icc" class="tab tab_content sortabletable autoClass" <?php echo $pageBar['sort'];?>>
   <tr class=".myth">
 	<th class="sort" sort_field="id">id</th>
