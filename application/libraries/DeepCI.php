@@ -19,4 +19,9 @@ class DeepCI
 	{
 		return new DeepCI_Page_PageBar($dql, $offset);
 	}
+	
+	public static function getSearchData()
+	{
+		return DeepCI_Page_PageBar_Data::get();
+	}
 }

@@ -23,13 +23,18 @@ class Member extends CI_Controller {
 	{
 		$this->ViewBag['layout_title'] .= ' > 列表';
 		
+		// search data
+		$this->ViewBag['sData'] = DeepCI::getSearchData();
+		
 		// query dql
 		$q = Doctrine_Query::create()
                 ->from('PdoMember')
 				->orderBy('id desc');
 		
-		//page bar
+		// pageBar
 		$pageBar = DeepCI::getPageBar($q, $offset);
+		// echo $pageBar->getSqlQuery();
+		
 		$this->ViewBag['listRows']	= $pageBar->getResult();
 		$this->ViewBag['pageBar']	= $pageBar->getHtml();
 		

@@ -21,7 +21,7 @@ class DeepCI_Page_PageBar
 	public function __construct($dql, $offset=0)
 	{
 		parse_str($_SERVER['QUERY_STRING'],$_GET);
-
+		
 		// dhl
 		$this->dql =& $dql;
 		
@@ -56,6 +56,61 @@ class DeepCI_Page_PageBar
 		if(!empty($_GET['sort_desc'])) {
 			DeepCI_Page_PageBar_Data::setDqlSort($_GET['sort_desc'],'desc');
 		}
+		
+		// set post data
+		$this->initSearch();
+	}
+	
+	function initSearch()
+	{
+		// allow like(llike, rlike flike) eq gt lt
+		$allow = array('like','eq','gt','lt','llike','rlike','flike');
+		$sData = $this->getData();
+		foreach($sData as $k=>$v)
+		{
+			if (empty($v))
+				continue;
+			if( ! strpos($k,'__'))
+				continue;
+			
+			$tmp = explode('__',$k);
+			$field = $tmp[0];
+			$type = $tmp[1];
+
+			switch($type) {
+				case 'like':
+					$this->dql->andWhere("{$field} like '{$v}'");
+					break;
+				case 'eq':
+					$this->dql->andWhere("{$field} = '{$v}'");
+					break;
+				case 'gt':
+					$this->dql->andWhere("{$field} > {$v}");
+					break;
+				case 'lt':
+					$this->dql->andWhere("{$field} < {$v}");
+					break;
+				case 'llike':
+					$this->dql->andWhere("{$field} like '%{$v}'");
+					break;
+				case 'rlike':
+					$this->dql->andWhere("{$field} like '{$v}%'");
+					break;
+				case 'flike':
+					$this->dql->andWhere("{$field} like '%{$v}%'");
+					break;
+			}
+		}
+	}
+	
+	function getSqlQuery()
+	{
+		return $this->dql->getSqlQuery();
+	}
+	
+	function getSql()
+	{
+		return $this->getSqlQuery();
 	}
 	
 	function setBaseUrl($base_url)
@@ -90,8 +145,6 @@ class DeepCI_Page_PageBar
 	{
 		return DeepCI_Page_PageBar_Data::get();
 	}
-	
-	
 	
 	function getResult()
 	{

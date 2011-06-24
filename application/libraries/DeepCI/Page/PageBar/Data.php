@@ -23,6 +23,8 @@ class DeepCI_Page_PageBar_Data
 	{
 		if(self::$inited==true)
 			return;
+		else
+			self::$inited = true;
 
 		parse_str($_SERVER['QUERY_STRING'],$_GET);
 		if(!empty($_GET['act'])&&$_GET['act']=='clean')
@@ -33,15 +35,8 @@ class DeepCI_Page_PageBar_Data
 			self::set($_POST);
 		}
 		
-		if(!empty($_GET['perpage'])) {
-			self::setPerPage($_GET['perpage']);
-		}
-		
 		//设置最后访问Uri
-		self::setLastUri();
-		
-		//设置已经执行 init
-		self::$inited = true;
+		//self::setLastUri();		
 	}
 	
 	/**
@@ -63,13 +58,27 @@ class DeepCI_Page_PageBar_Data
 		$pageKeyName = self::getPageKeyName();
 		
 		if(!empty($_SESSION['PageBarData'][$pageKeyName]))
-			$da2 = self::cleanPostData($_SESSION['PageBarData'][$pageKeyName]);
+			$da2 = $_SESSION['PageBarData'][$pageKeyName];
+			//$da2 = self::cleanPostData($_SESSION['PageBarData'][$pageKeyName]);
 		else 
 			$da2 = array();
 		
+		// dql 查詢數據 還原
+		$data2 = array();
+		foreach($data as $k=>$v)
+		{
+			if(strpos($k,'__')) {
+				$tmp = explode('__',$k);
+				$data2[$tmp[0]] = $v;
+			}
+		}
+		
 		$data = array_merge($da2,$data);
+		$data = array_merge($data,$data2);
 		$_SESSION['PageBarData'][$pageKeyName] = $data;
 	}
+	
+
 	
 	/**
 	 * 去掉post過來的數據
@@ -104,19 +113,17 @@ class DeepCI_Page_PageBar_Data
 		if(!empty(self::$pageKeyName))
 			return self::$pageKeyName;
 		
-		/** 计算出pageKeyName **/
-		$CI = & get_instance();
+		/** 计算出pageKeyName **/		
+		$CI		=& get_instance();
+		$uri	=& $CI->uri;
 		
-		$fir = $CI->uri->segment(1);
-		$sed = $CI->uri->segment(2);
-		if(empty($sed)) $sed = self::$indexFunction;
+		if(empty($uri->segments[1]))
+			$pageKeyName = $uri->rsegments[1].'_'.$uri->rsegments[2];
+		else
+			$pageKeyName = $uri->segments[1].'_'.$uri->rsegments[1].'_'.$uri->rsegments[2];
 		
-		if(in_array($fir,array('admin','member'))) {
-			$thr = $CI->uri->segment(3);
-			if(empty($thr)) $thr = self::$indexFunction;
-			$pageKeyName = $fir.'_'.$sed.'_'.$thr;
-		} else
-			$pageKeyName = $fir.'_'.$sed;
+		if ($uri->rsegments[2]!=self::$indexFunction)
+			$pageKeyName .= '_'.self::$indexFunction;
 		
 		self::$pageKeyName = $pageKeyName;
 		return $pageKeyName;
