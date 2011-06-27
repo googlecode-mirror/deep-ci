@@ -47,8 +47,10 @@ class DeepCI_Page_Message
 			
 			if(empty($uri->segments[1]))
 				$url = $uri->rsegments[1].'/'.$url;
-			else
-				$url = $uri->segments[1].'/'.$uri->rsegments[1].'/'.$url;
+			else {
+				$directory = trim($CI->router->directory,'/');
+				$url = $directory.'/'.$uri->rsegments[1].'/'.$url;
+			}
 		}
 		
 		redirect($url);
@@ -68,7 +70,7 @@ class DeepCI_Page_Message
 		$msg	= str_replace("'","\\'",$data['msg']);
 		$msg	= "<strong>提示：</strong>".$msg;
 		
-		$subJs	= ($data['autoHide']) ? 'TimeShown : 2000, ' : 'autoHide : false, ';
+		$subJs	= ($data['autoHide']) ? 'TimeShown : 1200, ' : 'autoHide : false, ';
 		$subJs	.= "VerticalPosition : 'center', HorizontalPosition:'center'";
 		
 		switch($data['type']) {
