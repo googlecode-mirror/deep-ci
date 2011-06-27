@@ -7,7 +7,12 @@ class Helper extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('helper/index');
+		$data = array();
+		
+		$maker = new DeepCI_Tool_Doctrine();
+		$data['pdos'] = $maker->getAllPdoModels();
+		
+		$this->load->view('helper/index',$data);
 	}
 	
 	/**
@@ -29,9 +34,9 @@ class Helper extends CI_Controller {
 		parse_str($_SERVER['QUERY_STRING'],$_GET);
 		
 		if(empty($_GET['pdo_name']))
-			die('pdo_name empty');
+			die('PdoName empty');
 		if(empty($_GET['vire_url']))
-			die('vire_url empty');
+			die('ViewUrl empty');
 		
 		$pdo_name = $_GET['pdo_name'];
 		$vire_url = $_GET['vire_url'];

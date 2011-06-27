@@ -153,4 +153,24 @@ class DeepCI_Tool_Doctrine
 		
 		return $reDir;
 	}
+	
+	// ------------------------------------------------------------------------
+	
+	/**
+	 * 獲取所有Pdo
+	 */
+	public function getAllPdoModels()
+	{
+		$fiels = $this->getFileList($this->pdoDir);
+		
+		$reArr = array();
+		foreach($fiels as $file) {
+			if(strpos($file['name'],'Pdo')===0) {
+				$strlne = strlen($file['name'])-4; 
+				$reArr[] = substr($file['name'],0,$strlne); // Member , 去掉 .php
+			}
+		}
+		
+		return $reArr;
+	}
 }

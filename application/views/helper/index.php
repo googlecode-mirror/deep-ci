@@ -58,8 +58,8 @@ application/models/Pdo/Base<br>
 </code>
 
 <form action="<?php echo site_url('helper/create_controllers');?>">
-<p>生成controllers 
-PdoName：<input type="text" name="pdo_name"> <span style="color:red">例如： PdoMember</span> 
+<p>生成controllers &nbsp; // &nbsp; 
+PdoName：<select name="pdo_name"><?php foreach($pdos as $c) {?><option value="<?php echo $c;?>"><?php echo $c;?></option><?php }?></select> &nbsp; 
 ViewUrl：<input type="text" name="vire_url"> <span style="color:red">例如： /admin/member</span>
 <input type="submit" value="更新"></p>
 </form>
