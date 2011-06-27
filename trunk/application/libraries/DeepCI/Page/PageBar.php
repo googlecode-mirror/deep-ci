@@ -34,8 +34,10 @@ class DeepCI_Page_PageBar
 		
 		if(empty($uri->segments[1]))
 			$base_url = $uri->rsegments[1].'/'.$uri->rsegments[2];
-		else
-			$base_url = $uri->segments[1].'/'.$uri->rsegments[1].'/'.$uri->rsegments[2];
+		else {
+			$directory = trim($CI->router->directory,'/');
+			$base_url = $directory.'/'.$uri->rsegments[1].'/'.$uri->rsegments[2];
+		}
 		$this->setBaseUrl($base_url);
 		
 		// set per_page

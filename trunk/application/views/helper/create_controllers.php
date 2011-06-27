@@ -45,13 +45,19 @@ code {
 </head>
 <body>
 
-<h1>Welcome to CodeIgniter!</h1>
+<h1>助手工具</h1>
 
-<p>ORM文件更新成功！更新至：</p>
+<p>更新controllers</p>
 
-<code>/application/models/Pdo/<br>
-/application/models/Pdo/Basc/</code>
+<code>
+<?php echo $result;?>
+</code>
 
+<code>
+您可以通过 <a href="<?php echo site_url($vire_url);?>" target="_blank"><?php echo site_url($vire_url); ?></a> 查看
+</code>
+
+<p><a href="<?php echo site_url('helper')?>">返回</a></p>
 
 <p><br />Page rendered in {elapsed_time} seconds</p>
 

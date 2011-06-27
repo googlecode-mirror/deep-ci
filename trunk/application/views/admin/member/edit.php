@@ -9,9 +9,9 @@ $validation = DeepCI::createValidation('PdoMember', $member->toArray());
 ?>
 
 <form action="<?=site_url('admin/member/edit_do/'.$member->id)?>" method="post">
-<table class="tab autoClass">
+<table class="tab tab_content autoClass">
     <tr>
-        <th colspan="2">新增</th>
+        <th colspan="2">修改</th>
     </tr>
 	<tr>
         <td width="12%">username</td>

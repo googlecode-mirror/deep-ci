@@ -1,8 +1,8 @@
-<?php
+
 /**
- * 會員管理
+ * <?php echo $ucfirst_controller_name;?> Controller
  */
-class Member extends CI_Controller {
+class <?php echo $ucfirst_controller_name;?> extends CI_Controller {
 	
 	public $ViewBag = array();
 	
@@ -11,14 +11,14 @@ class Member extends CI_Controller {
 	{
 		parent::__construct();
 		
-		$this->ViewBag['layout_title'] = 'member 管理'; 
-		$this->layout->setLayout('admin/layout/main');
+		$this->ViewBag['layout_title'] = '<?php echo $ucfirst_controller_name;?> 管理'; 
+		$this->layout->setLayout('<?php echo $dirName; ?>/layout/main');
 	}
 	
 	// --------------------------------------------------------------------
 	
 	// GET
-	// /admin/member
+	// <?php echo $controller_base_url; ?> 
 	function index($offset=0)
 	{
 		$this->ViewBag['layout_title'] .= ' > 列表';
@@ -28,7 +28,7 @@ class Member extends CI_Controller {
 		
 		// query dql
 		$q = Doctrine_Query::create()
-                ->from('PdoMember')
+                ->from('<?php echo $Model_PdoName;?>')
 				->orderBy('id desc');
 		
 		// pageBar
@@ -44,7 +44,7 @@ class Member extends CI_Controller {
 	// --------------------------------------------------------------------
 	
 	// GET
-	// /admin/member/add
+	// <?php echo $controller_base_url; ?>/add
 	function add()
 	{
 		$this->ViewBag['layout_title'] .= ' > 添加';
@@ -58,18 +58,18 @@ class Member extends CI_Controller {
 	// --------------------------------------------------------------------
 	
 	// POST
-	// /admin/member/add_do
+	// <?php echo $controller_base_url; ?>/add_do
 	function add_do()
 	{
 		// php 驗證
-		$validation = DeepCI::createValidation('PdoMember');
+		$validation = DeepCI::createValidation('<?php echo $Model_PdoName;?>');
 		if ( ! $validation->run($_POST)) {
 			return page_message_error('add', $validation->getMessage());
 		}
 		
 		// 添加
 		try {
-			$member = Model_Member::add($_POST);
+			${#member} = <?php echo $Model_Full_Name; ?>::add($_POST);
 		} catch (Exception $e) {
 			return page_message_error('add', $e->getMessage());
 		}
@@ -81,7 +81,7 @@ class Member extends CI_Controller {
 	// --------------------------------------------------------------------
 	
 	// GET
-	// /admin/member/edit
+	// <?php echo $controller_base_url; ?>/edit
 	public function edit($id='')
 	{
 		$this->ViewBag['layout_title'] .= ' > 修改';
@@ -89,10 +89,10 @@ class Member extends CI_Controller {
 		// 加載 jquery.validation
 		$this->layout->loadJs('validate');
 		
-		// 獲取 PdoMember
-		$this->ViewBag['member'] = Model_Member::getTable()->find($id);
-		if (empty($this->ViewBag['member'] )) {
-			return page_message_error('index', 'PdoMember 不存在');
+		// 獲取 <?php echo $Model_PdoName;?> 
+		$this->ViewBag['{#member}'] = <?php echo $Model_Full_Name; ?>::getTable()->find($id);
+		if (empty($this->ViewBag['{#member}'] )) {
+			return page_message_error('index', '<?php echo $Model_PdoName;?> 不存在');
 		}
 		
 		$this->layout->view();
@@ -101,24 +101,24 @@ class Member extends CI_Controller {
 	// --------------------------------------------------------------------
 	
 	// POST
-	// /admin/member/edit_do
+	// <?php echo $controller_base_url; ?>/edit_do
 	public function edit_do($id='')
 	{
-		// 獲取 PdoMember
-		$member = Model_Member::getTable()->find($id);
-		if (empty($member)) {
-			return page_message_error('index', 'PdoMember 不存在');
+		// 獲取 <?php echo $Model_PdoName;?> 
+		${#member} = <?php echo $Model_Full_Name; ?>::getTable()->find($id);
+		if (empty(${#member})) {
+			return page_message_error('index', '<?php echo $Model_PdoName;?> 不存在');
 		}
 		
 		// php 驗證
-		$validation = DeepCI::createValidation('PdoMember');
+		$validation = DeepCI::createValidation('<?php echo $Model_PdoName;?>');
 		if ( ! $validation->run($_POST)) {
 			return page_message_error('add', $validation->getMessage());
 		}
 		
 		// 修改
 		try {
-			$member = Model_Member::edit($_POST, $member);
+			${#member} = <?php echo $Model_Full_Name; ?>::edit($_POST, ${#member});
 		} catch (Exception $e) {
 			return page_message_error('edit/'.$id, $e->getMessage());
 		}
@@ -130,13 +130,13 @@ class Member extends CI_Controller {
 	// --------------------------------------------------------------------
 	
 	// GET
-	// /admin/member/delete
+	// <?php echo $controller_base_url; ?>/delete
 	public function delete($id='')
 	{
 		// 刪除
-		$member = Model_Member::getTable()->find($id);
-		if ( ! empty($member)) {
-			$member->delete();
+		${#member} = <?php echo $Model_Full_Name; ?>::getTable()->find($id);
+		if ( ! empty(${#member})) {
+			${#member}->delete();
 		}
 		
 		// 返回

@@ -51,46 +51,6 @@ echo DeepCI::getPageMessage();
     
 	<ul class="expanded">
 	  <li><a href="<?=site_url('admin/member')?>">會員管理</a></li>
-	  <li><a href="<?=site_url('admin/service')?>">服務列表</a></li>
-	  <li><a href="<?=site_url('admin/transact')?>">訂單列表</a></li>
-	  <li><a href="<?=site_url('admin/order')?>">交易列表</a></li>
-    </ul>
-	
-  </li>
-</ul>
-<ul>
-  <li><a href="#" onclick="return false;" class="listhead">產品管理</a> 
-    
-	<ul class="expanded">
-	  <li><a href="<?=site_url('admin/product_price/group')?>">價格模板</a></li>
-	  <!-- <li><a href="<?=site_url('admin/product')?>">產品說明管理</a></li> -->
-	  <li><a href="<?=site_url('admin/svps')?>">VPS主機</a></li>
-	  <li><a href="<?=site_url('admin/cloud')?>">Cloud主機</a></li>
-	  <li><a href="<?=site_url('admin/virtual_host')?>">虛擬主機</a></li>
-	  <li><a href="<?=site_url('admin/virtual_host_server')?>">虛擬主機伺服器</a></li>
-	  <!-- <li><a href="<?=site_url('admin/cloudlayer_vps')?>">CloudlayerVPS</a></li> -->
-	  <li><a href="<?=site_url('admin/product_taobao')?>">淘寶產品管理</a></li>
-    </ul>
-	
-  </li>
-</ul>
-<ul>
-  <li><a href="#" onclick="return false;" class="listhead">電子報</a> 
-    
-	<ul class="expanded">
-	  <li><a href="<?=site_url('admin/newspaper/add')?>">發送電子報</a></li>
-	  <li><a href="<?=site_url('admin/newspaper')?>">電子報列表</a></li>
-    </ul>
-	
-  </li>
-</ul>
-<ul>
-  <li><a href="#" onclick="return false;" class="listhead">系統設定</a> 
-    
-	<ul class="expanded">
-	  <li><a href="<?=site_url('admin/mail_template')?>">郵件模板</a></li>
-	  <li><a href="<?=site_url('admin/slog')?>">日誌管理</a></li>
-	  <li><a href="<?=site_url('admin/system')?>">系統設定</a></li>
     </ul>
 	
   </li>

@@ -9,7 +9,7 @@ $validation = DeepCI::createValidation('PdoMember');
 ?>
 
 <form action="<?=site_url('admin/member/add_do')?>" method="post">
-<table class="tab autoClass">
+<table class="tab tab_content autoClass">
     <tr>
         <th colspan="2">新增</th>
     </tr>
