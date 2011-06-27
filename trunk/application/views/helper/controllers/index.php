@@ -12,7 +12,7 @@ class <?php echo $ucfirst_controller_name;?> extends CI_Controller {
 		parent::__construct();
 		
 		$this->ViewBag['layout_title'] = '<?php echo $ucfirst_controller_name;?> 管理'; 
-		$this->layout->setLayout('<?php echo $dirName; ?>/layout/main');
+		$this->layout->setLayout('admin/layout/main');
 	}
 	
 	// --------------------------------------------------------------------
