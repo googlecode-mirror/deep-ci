@@ -65,9 +65,11 @@ class DeepCI_Tool_Controller
 			
 			if(! is_dir($controllers_path)) {
 				mkdir($controllers_path, 0777);
+				@chmod($controllers_path, 0777);
 			}
 			if(! is_dir($views_path)) {
 				mkdir($views_path, 0777);
+				@chmod($views_path, 0777);
 			}
 			
 			$controller_base_url = '/'.$dirName.'/'.$controllerName; // /admin/member
@@ -107,6 +109,7 @@ class DeepCI_Tool_Controller
 		$controller_views_path = $views_path.$controllerName.DIRECTORY_SEPARATOR;
 		if( ! is_dir($controller_views_path)) {
 			mkdir($controller_views_path, 0777);
+			@chmod($controller_views_path, 0777);
 		}
 		
 		// index.php 
