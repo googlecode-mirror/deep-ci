@@ -77,6 +77,7 @@ class DeepCI_Tool_Doctrine
 				
 				// 写入文件
 				file_put_contents($this->pdoDir.$className.'.php', $str);
+				@chmod($this->pdoDir.$className.'.php', 0777);
 				
 				// 所有字段
 				$model = new $className;
@@ -95,6 +96,7 @@ class DeepCI_Tool_Doctrine
 				
 				// 写入文件
 				file_put_contents($this->pdoDir.$className.'.php', $str);
+				@chmod($this->pdoDir.$className.'.php', 0777);
 				
 				$result[] = '[生成] application/models/Pdo/'.$className.'.php';
 			}
@@ -121,6 +123,7 @@ class DeepCI_Tool_Doctrine
 				
 				//写入文件
 				file_put_contents($this->modelDir.$Model_Name.'.php', $str);
+				@chmod($this->modelDir.$Model_Name.'.php', 0777);
 				$result2[] = '[生成] application/models/Modle/'.$Model_Name.'.php';
 			}
 			
