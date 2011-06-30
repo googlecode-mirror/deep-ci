@@ -23,6 +23,7 @@ class DeepCI_Tool_Doctrine
 		
 		if(! is_dir($this->tmpBaseDir)) {
 			mkdir($this->tmpBaseDir, 0777);
+			@chmod($this->tmpBaseDir, 0777);
 		}
 	}
 	
