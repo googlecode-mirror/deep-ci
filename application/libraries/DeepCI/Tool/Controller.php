@@ -99,6 +99,7 @@ class DeepCI_Tool_Controller
 			
 			// 写入文件
 			file_put_contents($controllers_path.$controllerName.'.php', $str);
+			@chmod($controllers_path.$controllerName.'.php', 0777);
 			$result[] = '[生成] application/controllers'.$controller_base_url.'.php';
 		}
 		
@@ -121,6 +122,7 @@ class DeepCI_Tool_Controller
 			
 			// 写入文件
 			file_put_contents($controller_views_path.'index.php', $str);
+			@chmod($controller_views_path.'index.php', 0777);
 			$result[] = '[生成] application/views'.$controller_base_url.'/index.php';
 		}
 		
@@ -138,6 +140,7 @@ class DeepCI_Tool_Controller
 			
 			// 写入文件
 			file_put_contents($controller_views_path.'add.php', $str);
+			@chmod($controller_views_path.'add.php', 0777);
 			$result[] = '[生成] application/views'.$controller_base_url.'/add.php';
 		}
 		
@@ -155,107 +158,10 @@ class DeepCI_Tool_Controller
 			
 			// 写入文件
 			file_put_contents($controller_views_path.'edit.php', $str);
+			@chmod($controller_views_path.'edit.php', 0777);
 			$result[] = '[生成] application/views'.$controller_base_url.'/edit.php';
 		}
 		
 		return $result;
-	}
-	
-	/**
-	 * 根據數據庫表 更新 Doctrine 對應的文件
-	 */
-	public function updateModels()
-	{
-		$result		= array();
-		$result2	= array();
-		
-		// 生成 ORM 文件
-		Doctrine_Core::generateModelsFromDb($this->tmpDir);
-
-		// Base 文件
-		$files = $this->getFileList($this->tmpBaseDir);
-		foreach($files as $file)
-		{
-			if(is_file($this->pdoBaseDir.$file['name']))
-			{
-				unlink($this->pdoBaseDir.$file['name']);
-			}
-			
-			rename($file['path'],$this->pdoBaseDir.$file['name']);
-		}
-		$result[] = '[更新] application/models/Pdo/Base/*';
-
-		// Pdo 文件
-		$files = $this->getFileList($this->tmpDir);
-		foreach($files as $file)
-		{
-			$CI =& get_instance();
-			$model = '';
-			$strlne = strlen($file['name'])-4; 
-			$oldClassName = substr($file['name'],0,$strlne); // Member , 去掉 .php
-			$className = 'Pdo'.$oldClassName; // PdoMember
-			$Model_PdoName = $className; // PdoMember
-			$Model_BaseName = 'Base'.$oldClassName; // BaseMember
-			$Model_Name = $oldClassName; // Member;
-			$modelNameStr = strtolower($oldClassName); // member
-				
-			if( ! is_file($this->pdoDir.$className.'.php'))
-			{
-				// 读取文件
-				$str = file_get_contents($file['path']);
-				
-				// 更新Class Name
-				$str = str_replace('class '.$oldClassName, 'class '.$className, $str);
-				
-				// 写入文件
-				file_put_contents($this->pdoDir.$className.'.php', $str);
-				
-				// 所有字段
-				$model = new $className;
-				$columns = array();
-				foreach ($model as $column => $value) {
-					$columns[] = $column;
-				}
-				
-				// 添加验证功能
-				$data = array();
-				$data['Model_PdoName']	= $Model_PdoName;
-				$data['Model_BaseName']	= $Model_BaseName;
-				$data['columns']		= $columns;
-				$str = '<?php'.$CI->load->view('helper/models/Pdo.php',$data,true);
-				
-				// 写入文件
-				file_put_contents($this->pdoDir.$className.'.php', $str);
-				
-				$result[] = '[生成] application/models/Pdo/'.$className.'.php';
-			}
-			
-			// 生成Model文件
-			if( ! is_file($this->modelDir.$Model_Name.'.php'))
-			{
-				if(empty($columns)) {
-					$model = new $className;
-					$columns = array();
-					foreach ($model as $column => $value) {
-						$columns[] = $column;
-					}
-				}
-				
-				$data = array();
-				$data['Model_PdoName']	= $Model_PdoName;
-				$data['columns']		= $columns;
-				$data['Model_Name']		= $Model_Name;
-				
-				$str = '<?php'.$CI->load->view('helper/models/Model.php',$data,true);
-				$str = str_replace('{#member}', $modelNameStr, $str);
-				//写入文件
-				file_put_contents($this->modelDir.$Model_Name.'.php', $str);
-				$result2[] = '[生成] application/models/Modle/'.$Model_Name.'.php';
-			}
-			
-			unlink($file['path']);
-		}
-		
-		return array_merge($result, $result2);
 	}
 }
