@@ -45,28 +45,28 @@ code {
 </head>
 <body>
 
-<h1>助手工具</h1>
+<h1>工具 -- <span style="font-size:14px; font-weight:normal;">更新models</span></h1>
 
 <form action="<?php echo site_url('helper/update_models');?>">
-<p>更新models <input type="submit" value="更新"></p>
+<p> <input type="submit" value="更新"></p>
 </form>
 
-<code>將自動生成或更新<br>
+<code>將自動生成或更新以下目錄<br>
 application/models/Model<br>
 application/models/Pdo<br>
 application/models/Pdo/Base<br>
 </code>
-
+<h1>工具 -- <span style="font-size:14px; font-weight:normal;">生成controllers</span></h1>
 <form action="<?php echo site_url('helper/create_controllers');?>">
-<p>生成controllers &nbsp; // &nbsp; 
+<p>
 PdoName：<select name="pdo_name"><?php foreach($pdos as $c) {?><option value="<?php echo $c;?>"><?php echo $c;?></option><?php }?></select> &nbsp; 
-ViewUrl：<input type="text" name="vire_url"> <span style="color:red">例如： /admin/member</span>
+ViewUrl：<input type="text" name="vire_url"> <span style="color:red">例如： /admin/mymember</span>
 <input type="submit" value="更新"></p>
 </form>
 
 <code>將生成 list add edit delete 四種操作</code>
 
-<code>將自動生成<br>
+<code>將自動生成或更新以下目錄<br>
 application/controllers<br>
 application/views<br>
 </code>
