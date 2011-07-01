@@ -112,9 +112,24 @@ class DeepCI_Validation_Core
 					return false;
 				}
 				break;
+			case 'regex':
+				$preg = $rule[1];
+				$preg = ( preg_match("/^\^/i", $preg) ) ? $preg : '^'.$preg;
+				$preg = ( preg_match("/\$$/i", $preg) ) ? $preg : $preg.'$';
+				$preg = '/'.$preg.'/';
+				if( ! preg_match($preg, $fieldData)) {
+					$msg =(empty($rule[2])) ? $field.' 不匹配' : $rule[2];
+					$this->errorMessage = $msg;
+					return false;
+				}
+				break;
 			case 'equalto':
-				// todo 
-				$html = ' data-val-equalto="" data-val-other="'.$rule[1].'"';
+				$otherData = @$data[$rule[1]];
+				if($otherData != $fieldData) {
+					$msg = (empty($rule[2])) ? $field.' 于'.$rule[1].'不一樣' : $rule[2];
+					$this->errorMessage = $msg;
+					return false;
+				}
 				break;
 		}
 		
@@ -203,9 +218,13 @@ class DeepCI_Validation_Core
 				$msg = (empty($rule[1])) ? $field.' 不是有效的日期' : $rule[1];
 				$html = ' data-val-date="'.$msg.'"';
 				break;
+			case 'regex':
+				$msg = (empty($rule[2])) ? $field.' 不匹配' : $rule[2];
+				$html = ' data-val-regex-pattern="'.$rule[1].'" data-val-regex="'.$msg.'"';
+				break;
 			case 'equalto':
-				// todo 
-				$html = ' data-val-equalto="" data-val-other="'.$rule[1].'"';
+				$msg = (empty($rule[2])) ? $field.' 于'.$rule[1].'不一樣' : $rule[2];
+				$html = ' data-val-equalto="'.$msg.'" data-val-equalto-other="'.$rule[1].'"';
 				break;
 		}
 
