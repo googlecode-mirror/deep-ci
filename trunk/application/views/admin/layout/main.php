@@ -43,11 +43,14 @@ echo DeepCI::getPageMessage();
   <li><a href="#" onclick="return false;" class="listhead"> 歡迎您！</a> 
     <ul class="expanded" id="submenuid0"><!--第二級 -->
 	  <li><a href="<?=site_url('admin')?>">首頁</a></li>
+	  <li><a href="<?=site_url('admin')?>">管理員設定</a></li>
+	  <li><a href="<?=site_url('admin')?>">郵件模板</a></li>
+	  <li><a href="<?=site_url('admin')?>">網站設定</a></li>
     </ul>
   </li>
 </ul>
 <ul>
-  <li><a href="#" onclick="return false;" class="listhead">會員&服務管理</a> 
+  <li><a href="#" onclick="return false;" class="listhead">會員管理</a> 
     
 	<ul class="expanded">
 	  <li><a href="<?=site_url('admin/member')?>">會員管理</a></li>
