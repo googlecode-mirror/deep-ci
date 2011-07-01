@@ -12,27 +12,18 @@ class Model_Member
 	// --------------------------------------------------------------------
 	
 	/**
-	 * Ìí¼Ó
+	 * ±£´æ
 	 */
-	public static function add($param)
+	public static function save($param, $member='')
 	{
-		$member = new PdoMember();
-		$member->username	= $param['username'];
-		$member->passowrd	= $param['passowrd'];
-		$member->email	= $param['email'];
-		$member->create_date	= $param['create_date'];
-		$member->save();
+		if ($member==='') {
+			$member = new PdoMember();
+		}
 		
-		return $member;
-	}
-	
-	// --------------------------------------------------------------------
-	
-	/**
-	 * ÐÞ¸Ä
-	 */
-	public static function edit($param, PdoMember $member)
-	{
+		if ( ! ($member instanceof PdoMember)) {
+			throw new Exception('Class type is not PdoMember.');
+		}
+		
 		$member->username	= $param['username'];
 		$member->passowrd	= $param['passowrd'];
 		$member->email	= $param['email'];

@@ -69,7 +69,7 @@ class Member extends CI_Controller {
 		
 		// 添加
 		try {
-			$member = Model_Member::add($_POST);
+			$member = Model_Member::save($_POST);
 		} catch (Exception $e) {
 			return page_message_error('add', $e->getMessage());
 		}
@@ -118,7 +118,7 @@ class Member extends CI_Controller {
 		
 		// 修改
 		try {
-			$member = Model_Member::edit($_POST, $member);
+			$member = Model_Member::save($_POST, $member);
 		} catch (Exception $e) {
 			return page_message_error('edit/'.$id, $e->getMessage());
 		}
