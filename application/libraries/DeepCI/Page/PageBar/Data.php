@@ -117,12 +117,12 @@ class DeepCI_Page_PageBar_Data
 		$CI		=& get_instance();
 		$uri	=& $CI->uri;
 		
-		if(empty($uri->segments[1]))
+		$directory = trim($CI->router->directory,'/');
+		
+		if(empty($directory))
 			$pageKeyName = $uri->rsegments[1].'_'.$uri->rsegments[2];
-		else {
-			$directory = trim($CI->router->directory,'/');
+		else
 			$pageKeyName = $directory.'_'.$uri->rsegments[1].'_'.$uri->rsegments[2];
-		}
 		
 		if ($uri->rsegments[2]!=self::$indexFunction)
 			$pageKeyName .= '_'.self::$indexFunction;
