@@ -45,12 +45,12 @@ class DeepCI_Page_Message
 			$CI =& get_instance();
 			$uri =& $CI->uri;
 			
-			if(empty($uri->segments[1]))
+			$directory = trim($CI->router->directory,'/');
+			
+			if(empty($directory))
 				$url = $uri->rsegments[1].'/'.$url;
-			else {
-				$directory = trim($CI->router->directory,'/');
+			else
 				$url = $directory.'/'.$uri->rsegments[1].'/'.$url;
-			}
 		}
 		
 		redirect($url);
