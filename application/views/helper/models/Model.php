@@ -12,26 +12,18 @@ class <?php echo $Model_Full_Name;?>
 	// --------------------------------------------------------------------
 	
 	/**
-	 * 添加
+	 * Save
 	 */
-	public static function add($param)
+	public static function save($param, ${#member} ='')
 	{
-		${#member} = new <?php echo $Model_PdoName;?>();
-<?php foreach($columns as $c) { if($c=='id') continue;?>
-		${#member}-><?php echo $c;?>	= $param['<?php echo $c;?>'];
-<?php }?>
-		${#member}->save();
+		if (${#member}==='') {
+			${#member} = new <?php echo $Model_PdoName;?>();
+		}
 		
-		return ${#member};
-	}
-	
-	// --------------------------------------------------------------------
-	
-	/**
-	 * 修改
-	 */
-	public static function edit($param, <?php echo $Model_PdoName;?> ${#member})
-	{
+		if ( ! (${#member} instanceof <?php echo $Model_PdoName;?>)) {
+			throw new Exception('Class type is not <?php echo $Model_PdoName;?>.');
+		}
+		
 <?php foreach($columns as $c) { if($c=='id') continue;?>
 		${#member}-><?php echo $c;?>	= $param['<?php echo $c;?>'];
 <?php }?>

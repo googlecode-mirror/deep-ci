@@ -69,7 +69,7 @@ class <?php echo $ucfirst_controller_name;?> extends CI_Controller {
 		
 		// 添加
 		try {
-			${#member} = <?php echo $Model_Full_Name; ?>::add($_POST);
+			${#member} = <?php echo $Model_Full_Name; ?>::save($_POST);
 		} catch (Exception $e) {
 			return page_message_error('add', $e->getMessage());
 		}
@@ -118,7 +118,7 @@ class <?php echo $ucfirst_controller_name;?> extends CI_Controller {
 		
 		// 修改
 		try {
-			${#member} = <?php echo $Model_Full_Name; ?>::edit($_POST, ${#member});
+			${#member} = <?php echo $Model_Full_Name; ?>::save($_POST, ${#member});
 		} catch (Exception $e) {
 			return page_message_error('edit/'.$id, $e->getMessage());
 		}
