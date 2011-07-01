@@ -27,7 +27,7 @@ class PdoMember extends BaseMember implements DeepCI_Validation_PdoInterface
 		// passowrd
 		$rules['passowrd'][]	= array('required');
 		$rules['passowrd'][]	= array('regex','[0-9a-zA-Z]{6,}','必須為6位以上');
-		$rules['passowrd'][]	= array('equalto','username','必須與username相等');
+		// $rules['passowrd'][]	= array('equalto','username','必須與username相等');
 		
 		// email
 		$rules['email'][]	= array('required');
