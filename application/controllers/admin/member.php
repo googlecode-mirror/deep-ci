@@ -28,7 +28,7 @@ class Member extends CI_Controller {
 		
 		// query dql
 		$q = Doctrine_Query::create()
-                ->from('PdoMember')
+                ->from('PdoMember m')
 				->orderBy('id desc');
 		
 		// pageBar

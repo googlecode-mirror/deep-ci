@@ -79,6 +79,9 @@ class DeepCI_Page_PageBar
 			$tmp = explode('__',$k);
 			$field = $tmp[0];
 			$type = $tmp[1];
+			
+			if(!empty($tmp[2]))
+				$field = $tmp[2].'.'.$field;
 
 			switch($type) {
 				case 'like':

@@ -14,7 +14,7 @@
   </tr>
   <tr>
 	<td>username</td>
-	<td><input type="text" name="username__like" value="<?=$sData->get('username')?>"></td>
+	<td><input type="text" name="username__like__m" value="<?=$sData->get('username')?>"></td>
 	<td>passowrd</td>
 	<td><input type="text" name="passowrd__like" value="<?=$sData->get('passowrd')?>"></td>
   </tr>
@@ -33,7 +33,7 @@
 
 <table id="icc" class="tab tab_content sortabletable autoClass" <?php echo $pageBar['sort'];?>>
   <tr class=".myth">
-	<th class="sort" sort_field="id">id</th>
+	<th class="sort" sort_field="m.id">id</th>
 	<th class="sort" sort_field="username">username</th>
 	<th class="sort" sort_field="passowrd">passowrd</th>
 	<th class="sort" sort_field="email">email</th>
