@@ -44,12 +44,27 @@ class DeepCI_Tool_Doctrine
 		$files = $this->getFileList($this->tmpBaseDir);
 		foreach($files as $file)
 		{
+			// 清除以前生产的文件
 			if(is_file($this->pdoBaseDir.$file['name']))
 			{
 				unlink($this->pdoBaseDir.$file['name']);
 			}
 			
-			rename($file['path'],$this->pdoBaseDir.$file['name']);
+			// 读取文件
+			$str = file_get_contents($file['path']);
+			
+			// 更新Pdo文件制定連接
+			$strlne = strlen($file['name'])-4; 
+			$BaseClassName = substr($file['name'],4,$strlne-4); // Member 
+			
+			$str = str_replace("bindComponent('{$BaseClassName}',", "bindComponent('Pdo{$BaseClassName}',", $str);
+			
+			// 写入文件
+			file_put_contents($this->pdoBaseDir.$file['name'], $str);
+			@chmod($this->pdoBaseDir.$file['name'], 0777);
+			
+			// 删除临时文件
+			@unlink($file['path']);
 		}
 		$result[] = '[更新] application/models/Pdo/Base/*';
 
