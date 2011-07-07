@@ -11,7 +11,7 @@ class Member extends CI_Controller {
 	{
 		parent::__construct();
 		
-		$this->ViewBag['layout_title'] = 'member 管理'; 
+		$this->ViewBag['layout_title'] = '會員管理'; 
 		$this->layout->setLayout('admin/layout/main');
 	}
 	

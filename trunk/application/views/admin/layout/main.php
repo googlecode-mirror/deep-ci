@@ -29,12 +29,12 @@ if(!empty($_loadJs)) {
 // 輸出 jNotify 提示
 echo DeepCI::getPageMessage();
 ?>
-<div id="container">
-  <div id="header">
+<div id="header" style="margin: 5px 12px;text-align: left;">
   
   <!-- end #header -->
   <img src="<?=style_url('admin');?>images/inner_logo.gif" /></div>
-
+<div id="container">
+  
   
   <div id="sidebar1" >
 <!-- 第一段菜單内容---------------------->
@@ -70,7 +70,7 @@ echo DeepCI::getPageMessage();
 
   <!-- end #sidebar1 --></div>
   <div id="mainContent">
-	<h1><img src="<?=style_url('admin');?>images/icon_title.gif" width="11" height="11" align="absmiddle" />&nbsp;<?php echo @$layout_title; ?></h1>
+	<h1><img src="<?=style_url('admin');?>images/icon_title.gif" align="absmiddle" />&nbsp;<?php echo @$layout_title; ?></h1>
   	<?php echo $_content_for_layout; ?>
 	<p>&nbsp;</p>
   </div><!-- end #mainContent -->

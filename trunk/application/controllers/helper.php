@@ -22,7 +22,12 @@ class Helper extends CI_Controller {
 	{
 		$data = array();
 		
+		// ºöÂÔModels
+		$ignore = array();
+		
 		$maker = new DeepCI_Tool_Doctrine();
+		$maker->setIgnoreModels($ignore);
+		
 		$data['result'] = $maker->updateModels();
 		$data['result'] =  implode('<br>',$data['result']);
 		
