@@ -98,12 +98,20 @@ class DeepCI_Page_PageBar_Data
 	{
 		$pageKeyName = self::getPageKeyName();
 		
-		$data = $_SESSION['PageBarData'][$pageKeyName];
+		if (empty($_SESSION['PageBarData'][$pageKeyName])) {
+			$data = array();
+		} else {
+			$data = $_SESSION['PageBarData'][$pageKeyName];
+		}
+		
 		$da = array();
 		foreach($data as $k=>$v) {
 			if(preg_match('/^\_/i',$k))
 				$da[$k] = $v;
 		}
+		
+		// 清空排序
+		$da['_dql_sort'] = array();
 		
 		$_SESSION['PageBarData'][$pageKeyName] = $da;
 	}
