@@ -161,18 +161,19 @@ class DeepCI_Validation_Core
 	
 	public function getSubInputHtml($field)
 	{
+		$html = 'name="'.$field.'" id="'.$field.'"';
+		
 		if(empty($field) or empty($this->rules)) {
-			return '';
+			return $html;
 		}
 		
 		$rules = $this->rules;
 		if(empty($rules[$field])) {
-			return '';
+			return $html;
 		}
 		
 		$this->nowField = $field;
 		
-		$html = '';
 		foreach($rules[$field] as $r) {
 			$html .= $this->_createValidationHtml($r, $field);
 		}
@@ -187,7 +188,7 @@ class DeepCI_Validation_Core
 			$html = ' value="'.$defaultValue[$field].'" '.$html;
 		}
 		
-		return 'name="'.$field.'" id="'.$field.'"'.$html;
+		return $html;
 	}
 	
 	private function _createValidationHtml($rule, $field)

@@ -11,6 +11,8 @@ class DeepCI_Tool_Doctrine
 	private $pdoBaseDir;
 	private $modelDir;
 	
+	private $ignore;
+	
 	// ------------------------------------------------------------------------
 	
 	public function __construct()
@@ -25,6 +27,18 @@ class DeepCI_Tool_Doctrine
 			mkdir($this->tmpBaseDir, 0777);
 			@chmod($this->tmpBaseDir, 0777);
 		}
+		
+		$this->ignore = array();
+	}
+	
+	// ------------------------------------------------------------------------
+	
+	/**
+	 * 忽略Model類的生產
+	 */
+	public function setIgnoreModels($ignore)
+	{
+		$this->ignore = $ignore;
 	}
 	
 	// ------------------------------------------------------------------------
@@ -81,7 +95,7 @@ class DeepCI_Tool_Doctrine
 			$Model_BaseName = 'Base'.$oldClassName; // BaseMember
 			$Model_Name = $oldClassName; // Member
 			$Model_Full_Name = 'Model_'.$Model_Name; //Model_Member
-			$modelNameStr = strtolower($oldClassName); // member
+			$Lower_Model_Name = $this->lowerFirstChar($Model_Name); // member
 				
 			if( ! is_file($this->pdoDir.$className.'.php'))
 			{
@@ -118,7 +132,8 @@ class DeepCI_Tool_Doctrine
 			}
 			
 			// 生成Model文件
-			if( ! is_file($this->modelDir.$Model_Name.'.php'))
+			if( ! is_file($this->modelDir.$Model_Name.'.php') 
+				&& ! in_array($Model_Name, $this->ignore) )
 			{
 				if(empty($columns)) {
 					$model = new $className;
@@ -135,7 +150,7 @@ class DeepCI_Tool_Doctrine
 				$data['Model_Full_Name'] = $Model_Full_Name;
 				
 				$str = '<?php'.$CI->load->view('helper/models/Model.php',$data,true);
-				$str = str_replace('{#member}', $modelNameStr, $str);
+				$str = str_replace('{#member}', $Lower_Model_Name, $str);
 				
 				//写入文件
 				file_put_contents($this->modelDir.$Model_Name.'.php', $str);
@@ -147,6 +162,17 @@ class DeepCI_Tool_Doctrine
 		}
 		
 		return array_merge($result, $result2);
+	}
+	
+	/**
+	 * 首字母小寫
+	 */
+	private function lowerFirstChar($str)
+	{
+		$s1 = substr($str,0,1);
+		$s2 = substr($str,1);
+		
+		return strtolower($s1).$s2;
 	}
 	
 	// ------------------------------------------------------------------------

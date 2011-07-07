@@ -83,7 +83,7 @@ class DeepCI_Tool_Controller
 		$Model_PdoName = $Model_PdoName; // PdoMember
 		
 		$Sub_Model_Name = substr($Model_PdoName, 3); // Member
-		$Lower_Model_Name = strtolower($Sub_Model_Name); // member
+		$Lower_Model_Name = $this->lowerFirstChar($Sub_Model_Name); // member
 		$Model_Full_Name = 'Model_'.$Sub_Model_Name; //Model_Member
 		$ucfirst_controller_name = ucfirst($controllerName); // Member
 		
@@ -166,5 +166,16 @@ class DeepCI_Tool_Controller
 		}
 		
 		return $result;
+	}
+	
+	/**
+	 * 首字母小寫
+	 */
+	private function lowerFirstChar($str)
+	{
+		$s1 = substr($str,0,1);
+		$s2 = substr($str,1);
+		
+		return strtolower($s1).$s2;
 	}
 }
