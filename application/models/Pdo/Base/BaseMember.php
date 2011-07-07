@@ -1,6 +1,6 @@
 <?php
 // Connection Component Binding
-Doctrine_Manager::getInstance()->bindComponent('Member', 'default');
+Doctrine_Manager::getInstance()->bindComponent('PdoMember', 'default');
 
 /**
  * BaseMember

@@ -1,11 +1,11 @@
-<table class="tab" >
+<table class="tab_line" style="margin-top:-18px;">
   <tbody><tr class="event">
-	<td class="tar"><a href="<?=site_url('admin/member')?>">列表</a> | <a href="<?=site_url('admin/member/add')?>">添加</a></td>
+	<td class="tar"><a href="<?=site_url('/admin/member')?>">列表</a> | <a href="<?=site_url('/admin/member/add')?>">添加</a></td>
   </tr>
 </tbody></table>
 
 <form action="<?=site_url('admin/member')?>" method="post">
-<table class="tab tab_content autoClass">
+<table class="tab autoClass">
   <tr>
 	<th width="15%" class="tal">搜索</th>
 	<th width="35%">&nbsp;</th>
@@ -31,8 +31,8 @@
 </table>
 </form>
 
-<table id="icc" class="tab tab_content sortabletable autoClass" <?php echo $pageBar['sort'];?>>
-  <tr class=".myth">
+<table id="icc" class="tab tab_content_list sortabletable autoClass" <?php echo $pageBar['sort'];?>>
+  <tr>
 	<th class="sort" sort_field="m.id">id</th>
 	<th class="sort" sort_field="username">username</th>
 	<th class="sort" sort_field="passowrd">passowrd</th>
@@ -52,7 +52,7 @@
   <?php }?>
 </table>
 
-<table class="tab">
+<table class="tab_line">
   <tr>
 	<td class="tac" style="text-align:left;"><?php echo $pageBar['html'];?></td>
 	<td class="tac" style="text-align:right;"><?php echo $pageBar['select'];?></td>

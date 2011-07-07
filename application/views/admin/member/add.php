@@ -1,4 +1,4 @@
-<table class="tab" >
+<table class="tab_line" style="margin-top:-18px;">
   <tbody><tr class="event">
 	<td class="tar"><a href="<?=site_url('admin/member')?>">列表</a> | <a href="<?=site_url('admin/member/add')?>">添加</a></td>
   </tr>
@@ -9,7 +9,7 @@ $validation = DeepCI::createValidation('PdoMember');
 ?>
 
 <form action="<?=site_url('admin/member/add_do')?>" method="post">
-<table class="tab tab_content autoClass">
+<table class="tab tab_content_list autoClass">
     <tr>
         <th colspan="2">新增</th>
     </tr>
