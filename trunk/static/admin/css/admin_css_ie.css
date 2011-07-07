@@ -1,0 +1,11 @@
+@charset "utf-8";
+/* CSS Document */
+/* 请将所有版本的 IE 的 css 修复放在这个条件注释中 */
+.admin_page #sidebar1 { padding-top: 5px; }
+.admin_page #mainContent { zoom: 1; }
+.admin_page #sidebar1 { width: 177px; }
+.admin_page #mainContent {margin: 0 0 0 192px; }
+.admin_index #mainContent input{margin:0px;}
+/* 上面的专用 zoom 属性为 IE 提供避免错误所需的 hasLayout */
+
+

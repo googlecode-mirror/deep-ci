@@ -1,0 +1,38 @@
+
+
+/**************************************************************
+
+	Sortable Table
+	v 1.4
+
+**************************************************************/
+
+
+
+.sortabletable .sort {
+	background:  url(images/icon-table-sort.png) no-repeat 10px 8px;
+	padding-right:4px;
+	padding-left:20px;
+	font-weight:bold;
+	cursor:pointer;
+}
+
+
+
+
+.sortabletable .sortedASC {
+	background: url(images/icon-table-sort-asc.png) no-repeat 10px 4px ;
+	padding-right:4px;
+	padding-left:20px;
+	font-weight:bold;
+	cursor:pointer;
+}
+
+.sortabletable .sortedDESC {
+	background: url(images/icon-table-sort-desc.png) no-repeat 10px 10px ;
+	padding-right:4px;
+	padding-left:20px;
+	font-weight:bold;
+	cursor:pointer;
+	
+}
