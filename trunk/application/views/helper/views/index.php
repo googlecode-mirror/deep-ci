@@ -1,11 +1,11 @@
-<table class="tab" >
+<table class="tab_line" style="margin-top:-18px;">
   <tbody><tr class="event">
 	<td class="tar"><a href="<#=site_url('<?php echo $controller_base_url; ?>')#>">列表</a> | <a href="<#=site_url('<?php echo $controller_base_url; ?>/add')#>">添加</a></td>
   </tr>
 </tbody></table>
 
 <form action="<#=site_url('<?php echo $controller_base_url; ?>')#>" method="post">
-<table class="tab tab_content autoClass">
+<table class="tab autoClass">
   <tr>
 	<th width="15%" class="tal">搜索</th>
 	<th width="35%">&nbsp;</th>
@@ -31,8 +31,8 @@
 </table>
 </form>
 
-<table class="tab tab_content sortabletable autoClass" <#php echo $pageBar['sort'];#>>
-  <tr class=".myth">
+<table class="tab tab_content_list sortabletable autoClass" <#php echo $pageBar['sort'];#>>
+  <tr>
 <?php foreach($columns as $c) {?>
 	<th class="sort" sort_field="<?php echo $c;?>"><?php echo $c;?></th>
 <?php }?>
@@ -48,7 +48,7 @@
   <#php }#>
 </table>
 
-<table class="tab">
+<table class="tab_line">
   <tr>
 	<td class="tac" style="text-align:left;"><#php echo $pageBar['html'];#></td>
 	<td class="tac" style="text-align:right;"><#php echo $pageBar['select'];#></td>
