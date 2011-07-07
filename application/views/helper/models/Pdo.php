@@ -13,9 +13,7 @@ class <?php echo $Model_PdoName;?> extends <?php echo $Model_BaseName;?> impleme
 		$rules = array();
 		
 <?php foreach($columns as $c) { if($c=='id') continue;?>
-		// <?php echo $c;?> 	
-		$rules['<?php echo $c;?>'][]	= array('required');
-		
+		$rules['<?php echo $c;?>'][]	= array('required'); // <?php echo $c;?> 
 <?php }?>
 
 		return $rules;

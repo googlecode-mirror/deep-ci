@@ -17,6 +17,7 @@ class <?php echo $Model_Full_Name;?>
 	public static function save($param, ${#member} ='')
 	{
 		if (${#member}==='') {
+			// create new
 			${#member} = new <?php echo $Model_PdoName;?>();
 		}
 		
