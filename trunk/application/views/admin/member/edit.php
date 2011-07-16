@@ -1,6 +1,6 @@
-<table class="tab_line" style="margin-top:-18px;">
-  <tbody><tr class="event">
-	<td class="tar"><a href="<?=site_url('admin/member')?>">列表</a> | <a href="<?=site_url('admin/member/add')?>">添加</a></td>
+<table class="tab_menu">
+  <tbody><tr>
+	<td><a href="<?=site_url('admin/member')?>">列表</a> | <a href="<?=site_url('admin/member/add')?>">添加</a></td>
   </tr>
 </tbody></table>
 
@@ -9,7 +9,7 @@ $validation = DeepCI::createValidation('PdoMember', $member->toArray());
 ?>
 
 <form action="<?=site_url('admin/member/edit_do/'.$member->id)?>" method="post">
-<table class="tab tab_content_list autoClass">
+<table class="tab_form autoClass">
     <tr>
         <th colspan="2">修改</th>
     </tr>
