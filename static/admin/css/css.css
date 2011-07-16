@@ -1,5 +1,21 @@
 @charset "utf-8";
-/* table */
+
+/* common */
+.des{ color: #666666;}
+.tal{text-align:left;}
+.tar{text-align:right;}
+.tac{text-align:center;}
+.b0{margin-bottom:0px;}
+.t0{margin-top:0px;}
+
+.hide{display:none;}
+.show{display:block;}
+table .show{display:table-row;}
+
+form {margin:0;}
+div .dashed {border-bottom:1px dashed #ccc;};
+
+
 .event td{	border-bottom-width: 1px;
 	border-bottom-style: dashed;
 	border-bottom-color: #CCCCCC;
@@ -9,20 +25,45 @@
 	border-bottom-color: #CCCCCC;
 	background-color: #F7F7F7;
 }
-/* table */
-.tab {border-collapse:collapse;margin-top:8px; margin-bottom:12px; width:98%;background: url("../images/table_t_bg.gif") repeat-x scroll 0 0 transparent;}
-.tab_line {border-collapse:collapse;margin-top:8px; margin-bottom:12px; width:98%;}
-.tab th { 
-	height:26px; 
-	/* border-top:1px solid #e6e4e4; 
-	border-bottom:1px solid #e6e4e4; */
+
+/* tab menu */
+.tab_menu {border-collapse:collapse;margin-top:8px; margin-bottom:12px; width:98%; margin-top:-20px;}
+.tab_menu td{height:25px; border-bottom:1px solid #ccc;padding-left:8px; padding-right:3px; text-align:right;}
+
+/* tab pagebar*/
+.tab_pagebar {border-collapse:collapse;margin-top:8px; margin-bottom:12px; width:98%;}
+.tab_pagebar td{height:25px; border-bottom:1px solid #ccc;padding-left:8px; padding-right:3px; }
+
+/* tab_content */
+.tab_content,.tab_form {border-collapse:collapse;margin-top:8px; margin-bottom:12px; width:98%;background: url("../images/table_t_bg.gif") repeat-x scroll 0 0 transparent;}
+
+table.tab_content tr.odd:hover td, table.tab_content tr.even:hover td, table.tab_content tr.hover td {
+    background: none repeat scroll 0 0 #CCFFCC;
+    color: #000000;
+}
+
+table.tab_content .odd td{
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #CCCCCC;
+	background-color: #EDF0F9;
+}
+table.tab_content .even td{
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #CCCCCC;
+}
+
+/* tab_form */
+.tab_content th, .tab_form th { 
+	height:25px; 
 	font-weight:bold; 
 	font-size:12px;
 	padding-left:5px; 
 	padding-right:3px; 
 	color:#333333;
 }
-.tab td, .tab_line td {
+.tab_content td, .tab_form td{
 	height:25px; 
 	font-size:12px; 
 	border-bottom:1px dashed #ccc;
@@ -34,29 +75,3 @@
 	color:#333333;
 }
 
-/* div */
-div .dashed {border-bottom:1px dashed #ccc;};
-
-/* end table */
-
-.des {
-	color: #666666;
-}
-
-.tal{text-align:left;}
-.tar{text-align:right;}
-.tac{text-align:center;}
-.b0{margin-bottom:0px;}
-.t0{margin-top:0px;}
-
-.hide{display:none;}
-.show{display:block;}
-
-table .show{display:table-row;}
-
-form {margin:0;}
-
-table.tab_content_list tr.odd:hover td, table.tab_content_list tr.even:hover td, table.tab_content_list tr.hover td {
-    background: none repeat scroll 0 0 #CCFFCC;
-    color: #000000;
-}

@@ -1,6 +1,6 @@
-<table class="tab_line" style="margin-top:-18px;">
-  <tbody><tr class="event">
-	<td class="tar"><a href="<#=site_url('<?php echo $controller_base_url; ?>')#>">列表</a> | <a href="<#=site_url('<?php echo $controller_base_url; ?>/add')#>">添加</a></td>
+<table class="tab_menu">
+  <tbody><tr>
+	<td><a href="<#=site_url('<?php echo $controller_base_url; ?>')#>">列表</a> | <a href="<#=site_url('<?php echo $controller_base_url; ?>/add')#>">添加</a></td>
   </tr>
 </tbody></table>
 
@@ -9,7 +9,7 @@ $validation = DeepCI::createValidation('<?php echo $Model_PdoName;?>');
 #>
 
 <form action="<#=site_url('<?php echo $controller_base_url; ?>/add_do')#>" method="post">
-<table class="tab tab_content_list autoClass">
+<table class="tab_form autoClass">
     <tr>
         <th width="12%">新增</th>
 		<th>&nbsp;</th>
