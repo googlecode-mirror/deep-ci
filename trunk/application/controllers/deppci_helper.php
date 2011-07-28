@@ -1,6 +1,11 @@
 <?php
 
-class Helper extends CI_Controller {
+class deppci_helper extends CI_Controller {
+	
+	function __construct()
+	{
+		parent::__construct();
+	}
 
 	/**
 	 * Ä¬ÕJí“Ãæ
@@ -12,7 +17,7 @@ class Helper extends CI_Controller {
 		$maker = new DeepCI_Tool_Doctrine();
 		$data['pdos'] = $maker->getAllPdoModels();
 		
-		$this->load->view('helper/index',$data);
+		$this->load->view('deepci_helper/index',$data);
 	}
 	
 	/**
@@ -31,7 +36,7 @@ class Helper extends CI_Controller {
 		$data['result'] = $maker->updateModels();
 		$data['result'] =  implode('<br>',$data['result']);
 		
-		$this->load->view('helper/update_models', $data);
+		$this->load->view('deepci_helper/update_models', $data);
 	}
 	
 	public function create_controllers()
@@ -59,6 +64,6 @@ class Helper extends CI_Controller {
 		
 		$data['result'] =  implode('<br>',$data['result']);
 		
-		$this->load->view('helper/create_controllers', $data);
+		$this->load->view('deepci_helper/create_controllers', $data);
 	}
 }
