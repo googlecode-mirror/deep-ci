@@ -200,31 +200,31 @@ class DeepCI_Validation_Core
 		$html = '';
 		switch ($rule[0]) {
 			case 'required':
-				$msg = (empty($rule[1])) ? $field.' 不能為空' : $rule[1];
+				$msg = (empty($rule[1])) ? '不能為空' : $rule[1];
 				$html = ' data-val-required="'.$msg.'"';
 				break;
 			case 'email':
-				$msg = (empty($rule[1])) ? $field.' 不是有有效的Email' : $rule[1];
+				$msg = (empty($rule[1])) ? '不是有有效的Email' : $rule[1];
 				$html = ' data-val-email="'.$msg.'"';
 				break;
 			case 'url':
-				$msg = (empty($rule[1])) ? $field.' 不是有效的URL' : $rule[1];
+				$msg = (empty($rule[1])) ? '不是有效的URL' : $rule[1];
 				$html = ' data-val-url="'.$msg.'"';
 				break;
 			case 'number':
-				$msg = (empty($rule[1])) ? $field.' 不是有效的數字' : $rule[1];
+				$msg = (empty($rule[1])) ? '不是有效的數字' : $rule[1];
 				$html = ' data-val-number="'.$msg.'"';
 				break;
 			case 'date':
-				$msg = (empty($rule[1])) ? $field.' 不是有效的日期' : $rule[1];
+				$msg = (empty($rule[1])) ? '不是有效的日期' : $rule[1];
 				$html = ' data-val-date="'.$msg.'"';
 				break;
 			case 'regex':
-				$msg = (empty($rule[2])) ? $field.' 不匹配' : $rule[2];
+				$msg = (empty($rule[2])) ? '不匹配' : $rule[2];
 				$html = ' data-val-regex-pattern="'.$rule[1].'" data-val-regex="'.$msg.'"';
 				break;
 			case 'equalto':
-				$msg = (empty($rule[2])) ? $field.' 于'.$rule[1].'不一樣' : $rule[2];
+				$msg = (empty($rule[2])) ? '與 '.$rule[1].' 值不一樣' : $rule[2];
 				$html = ' data-val-equalto="'.$msg.'" data-val-equalto-other="'.$rule[1].'"';
 				break;
 		}
