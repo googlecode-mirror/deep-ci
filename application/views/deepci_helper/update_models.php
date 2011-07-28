@@ -53,7 +53,7 @@ code {
 <?php echo $result;?>
 </code>
 
-<p><a href="<?php echo site_url('helper')?>">返回</a></p>
+<p><a href="<?php echo site_url('deepci_helper')?>">返回</a></p>
 
 <p><br />Page rendered in {elapsed_time} seconds</p>
 
