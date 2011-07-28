@@ -96,7 +96,7 @@ class DeepCI_Tool_Controller
 			$data['Model_Full_Name']			= $Model_Full_Name;
 			$data['controller_base_url']		= $controller_base_url;
 			
-			$str = '<?php'.$CI->load->view('helper/controllers/index.php',$data,true);
+			$str = '<?php'.$CI->load->view('deepci_helper/controllers/index.php',$data,true);
 			$str = str_replace('{#member}', $Lower_Model_Name, $str);
 			
 			// 写入文件
@@ -118,7 +118,7 @@ class DeepCI_Tool_Controller
 			$data['columns']			= $columns;
 			$data['controller_base_url']		= $controller_base_url;
 			
-			$str = $CI->load->view('helper/views/index.php',$data,true);
+			$str = $CI->load->view('deepci_helper/views/index.php',$data,true);
 			$str = str_replace('{#member}', $Lower_Model_Name, $str);
 			$str = str_replace('<#', '<?', $str);
 			$str = str_replace('#>', '?>', $str);
@@ -136,7 +136,7 @@ class DeepCI_Tool_Controller
 			$data['Model_PdoName']				= $Model_PdoName;
 			$data['controller_base_url']		= $controller_base_url;
 			
-			$str = $CI->load->view('helper/views/add.php',$data,true);
+			$str = $CI->load->view('deepci_helper/views/add.php',$data,true);
 			$str = str_replace('{#member}', $Lower_Model_Name, $str);
 			$str = str_replace('<#', '<?', $str);
 			$str = str_replace('#>', '?>', $str);
@@ -154,7 +154,7 @@ class DeepCI_Tool_Controller
 			$data['Model_PdoName']				= $Model_PdoName;
 			$data['controller_base_url']		= $controller_base_url;
 			
-			$str = $CI->load->view('helper/views/edit.php',$data,true);
+			$str = $CI->load->view('deepci_helper/views/edit.php',$data,true);
 			$str = str_replace('{#member}', $Lower_Model_Name, $str);
 			$str = str_replace('<#', '<?', $str);
 			$str = str_replace('#>', '?>', $str);

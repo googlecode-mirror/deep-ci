@@ -1,6 +1,6 @@
 <?php
 
-class deppci_helper extends CI_Controller {
+class deepci_helper extends CI_Controller {
 	
 	function __construct()
 	{

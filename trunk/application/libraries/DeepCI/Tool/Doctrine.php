@@ -122,7 +122,7 @@ class DeepCI_Tool_Doctrine
 				$data['Model_BaseName']	= $Model_BaseName;
 				$data['Model_Full_Name'] = $Model_Full_Name;
 				$data['columns']		= $columns;
-				$str = '<?php'.$CI->load->view('helper/models/Pdo.php',$data,true);
+				$str = '<?php'.$CI->load->view('deepci_helper/models/Pdo.php',$data,true);
 				
 				// 写入文件
 				file_put_contents($this->pdoDir.$className.'.php', $str);
@@ -149,7 +149,7 @@ class DeepCI_Tool_Doctrine
 				$data['Model_Name']		= $Model_Name;
 				$data['Model_Full_Name'] = $Model_Full_Name;
 				
-				$str = '<?php'.$CI->load->view('helper/models/Model.php',$data,true);
+				$str = '<?php'.$CI->load->view('deepci_helper/models/Model.php',$data,true);
 				$str = str_replace('{#member}', $Lower_Model_Name, $str);
 				
 				//写入文件

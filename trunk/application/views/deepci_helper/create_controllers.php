@@ -57,7 +57,7 @@ code {
 您可以通过 <a href="<?php echo site_url($vire_url);?>" target="_blank"><?php echo site_url($vire_url); ?></a> 查看
 </code>
 
-<p><a href="<?php echo site_url('helper')?>">返回</a></p>
+<p><a href="<?php echo site_url('deepci_helper')?>">返回</a></p>
 
 <p><br />Page rendered in {elapsed_time} seconds</p>
 
