@@ -22,7 +22,13 @@ function js_url()
 function pr($data,$htmlHidden=false)
 {
 	echo ($htmlHidden) ? '<!-- ' : '<pre>';
-	print_r($data);
+	
+	if( is_object($data) && $data instanceof IteratorAggregate ) {
+		print_r($data->toArray());
+	} else {
+		print_r($data);
+	}
+	
 	echo ($htmlHidden) ? ' -->' : '</pre>';
 }
 
