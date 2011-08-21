@@ -1,7 +1,10 @@
 == 基本 ==
+ASP.NET MVC 3 的 jquery.validate.unobtrusive.js 使用方法。
 Unobtrusive jQuery Validation內建支援的檢核規則(未包含creditcard及remote) 例子。
 
-原文 http://blog.darkthread.net/post-2011-07-27-unobtrusive-jquery-validation.aspx
+原文： http://blog.darkthread.net/post-2011-07-27-unobtrusive-jquery-validation.aspx
+
+参考： http://bradwilson.typepad.com/blog/2010/10/mvc3-unobtrusive-validation.html
 
 {{{
 <div>
