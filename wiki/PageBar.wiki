@@ -1,4 +1,45 @@
+= 快速搜索 =
+是以post变量名称(key), 按照一定规则转换成Sql语句
+{{{
+<input type="text" name="username__like">
+//转换成， 如果传递值为 howard
+$sql .= " and username like 'howard'"
+}}}
+
+== 变量名称(key)命名规则 ==
+
+{{{
+格式1、 fieldname__rule // username__like , date__eq
+格式2、 shorttablename_fieldname__rule // m_username__like member表(m 为定义的简写)username字段
+格式3、 fieldname__rule__shorttablename // username__like__shorttablename 功能同上
+}}}
+
+shorttablename 必须是一个小的字母。
+
+格式2 与 格式3 功能一样， 当符合*格式3*的的格式要求，则不再判断*格式2*。 *格式3* 是为了防止一些不符合要求的字段 例如 字段 'p_price' 。这样就必须使用*格式3*
+
+rules 见下面的表格。
+
+
+== 命名规则关键字 ==
+
+|| *关键字* || *对应值* || *Sql例子* ||
+|| like || like || username like 'howard'||
+|| eq || = || date = '2010-10-10' ||
+|| gt || > || date > '2010-10-10' ||
+|| gteq || >= || date >= '2010-10-10 ||
+|| lt || < || date < '2010-10-10 ||
+|| lteq || <= || date <= '2010-10-10 ||
+|| rlike || like xxx% || username like 'howard%' ||
+|| llike || like %xxx || username like '%howard' ||
+|| flike || like %xxx% || username like '%howard%' ||
+
+= 排序 =
 = 分页 =
+
+---- 
+以下内容暂时废弃，不做参考
+---- 
 class PageBar。整合Doctrine, codeigniter->pagination 的分頁類。
 Doctrine_Pager 用來查詢，并統計。 pagination 用來生成html。
 
