@@ -4,9 +4,10 @@
 是工作中为了方便快速的开发、基本功能的重用的总结。
 是PHP中使用ORM快速开发的实践。
 
- * MVC Farmwork CodeIgniter
- * ORM Doctrine
- * Javascript based Jquery
+ * PHP 5.2.3+
+  * MVC: Farmwork CodeIgniter? (2.0)
+  * ORM: Doctrine (1.2)
+  * Javascript Based: Jquery
 
 =  CodeIgniter 一些備註 =
 {{{
