@@ -25,7 +25,8 @@ Page rendered in {elapsed_time} seconds, and use {memory_usage} memory.
 }}}
 
 = 功能 =
- * [PageBar]
+ * [PageBar 分页]
+ * [jQuery_Validate jQuery表单验证]
 
 ----
 以下内容暂废弃，不做参考
