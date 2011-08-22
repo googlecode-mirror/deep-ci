@@ -23,16 +23,16 @@ rules 见下面的表格。
 
 == 命名规则关键字 ==
 
-|| *关键字* || *对应值* || *Sql例子* ||
-|| like || like || username like 'howard'||
-|| eq || = || date = '2010-10-10' ||
-|| gt || > || date > '2010-10-10' ||
-|| gteq || >= || date >= '2010-10-10 ||
-|| lt || < || date < '2010-10-10 ||
-|| lteq || <= || date <= '2010-10-10 ||
-|| rlike || like xxx% || username like 'howard%' ||
-|| llike || like %xxx || username like '%howard' ||
-|| flike || like %xxx% || username like '%howard%' ||
+|| *关键字* || *对应值* || *Key值* || *Sql例子* ||
+|| like || like || {{{username__like}}} || username like 'howard'||
+|| eq || = || {{{date__eq}}} || date = '2010-10-10' ||
+|| gt || > || {{{date__gt}}} || date > '2010-10-10' ||
+|| gteq || >= || {{{date__gteq}}} || date >= '2010-10-10 ||
+|| lt || < || {{{date__lt}}} || date < '2010-10-10 ||
+|| lteq || <= || {{{date__lteq}}} || date <= '2010-10-10 ||
+|| rlike || {{{like xxx%}}} || username__rlike || username like 'howard%' ||
+|| llike || {{{like %xxx}}} || username__llike || username like '%howard' ||
+|| flike || {{{like %xxx%}}} || username__flike || username like '%howard%' ||
 
 = 排序 =
 = 分页 =
