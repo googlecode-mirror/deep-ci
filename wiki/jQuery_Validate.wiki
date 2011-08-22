@@ -1,6 +1,14 @@
-== 基本 ==
-ASP.NET MVC 3 的 jquery.validate.unobtrusive.js 使用方法。
+== 说明 ==
+默认的表单验证使用 ASP.NET MVC 3 的 jquery.validate.unobtrusive.js 来实现。
 
+php中加载方式
+
+{{{
+// 加載 validate.unobtrusive
+$this->layout->loadJs('validate.unobtrusive');
+}}}
+
+=== 概念及参考 ===
 Unobtrusive JavaScript是一種將Javascript從HTML結構抽離的設計概念
 
 Unobtrusive jQuery Validation內建支援的檢核規則(未包含creditcard及remote) 例子。
@@ -8,8 +16,10 @@ Unobtrusive jQuery Validation內建支援的檢核規則(未包含creditcard及r
 原文： http://blog.darkthread.net/post-2011-07-27-unobtrusive-jquery-validation.aspx
 
 参考： 
-[http://bradwilson.typepad.com/blog/2010/10/mvc3-unobtrusive-validation.html Unobtrusive Client Validation in ASP.NET MVC 3(英文)]
+[http://bradwilson.typepad.com/blog/2010/10/mvc3-unobtrusive-validation.html Unobtrusive Client Validation in ASP.NET MVC 3(英文)] 
 [http://kb.cnblogs.com/page/80652/ Unobtrusive JavaScript in ASP.NET MVC 3]
+
+== 基本规则 ==
 
 {{{
 <div>
