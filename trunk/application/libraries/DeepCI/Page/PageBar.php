@@ -67,7 +67,7 @@ class DeepCI_Page_PageBar
 	function initSearch()
 	{
 		// allow like(llike, rlike flike) eq gt lt
-		$allow = array('like','eq','gt','lt','llike','rlike','flike');
+		$allow = array('like','eq','gt','lt','gteq','lteq','llike','rlike','flike');
 		$sData = $this->getData();
 		foreach($sData as $k=>$v)
 		{
@@ -76,12 +76,22 @@ class DeepCI_Page_PageBar
 			if( ! strpos($k,'__'))
 				continue;
 			
+			/* 解析格式 */
 			$tmp = explode('__',$k);
 			$field = $tmp[0];
 			$type = $tmp[1];
 			
-			if(!empty($tmp[2]))
+			// username__like__m 格式
+			if(!empty($tmp[2])) {
 				$field = $tmp[2].'.'.$field;
+			} else {
+				// m_username__like 格式
+				if(preg_match('/^[a-z]{1}\_/i',$field)) {
+					$tmp = substr($field,0,1);
+					$field = substr($field,2);
+					$field = $tmp.'.'.$field;
+				}
+			}
 
 			switch($type) {
 				case 'like':
@@ -93,8 +103,14 @@ class DeepCI_Page_PageBar
 				case 'gt':
 					$this->dql->andWhere("{$field} > {$v}");
 					break;
+				case 'gteq':
+					$this->dql->andWhere("{$field} >= {$v}");
+					break;
 				case 'lt':
 					$this->dql->andWhere("{$field} < {$v}");
+					break;
+				case 'lteq':
+					$this->dql->andWhere("{$field} <= {$v}");
 					break;
 				case 'llike':
 					$this->dql->andWhere("{$field} like '%{$v}'");
