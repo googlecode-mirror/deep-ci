@@ -1,5 +1,5 @@
 = 快速搜索 =
-是以post变量名称(key), 按照一定规则转换成Sql语句
+不写php代码，快速生成Sql语句。是按照POST变量名称(key), 按照一定规则转换成Sql语句
 {{{
 <input type="text" name="username__like">
 //转换成， 如果传递值为 howard
@@ -37,9 +37,10 @@ rules 见下面的表格。
 = 排序 =
 = 分页 =
 
----- 
+----
 以下内容暂时废弃，不做参考
----- 
+----
+
 class PageBar。整合Doctrine, codeigniter->pagination 的分頁類。
 Doctrine_Pager 用來查詢，并統計。 pagination 用來生成html。
 
