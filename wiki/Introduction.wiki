@@ -9,6 +9,14 @@
   * ORM: Doctrine (1.2)
   * Javascript Based: Jquery
 
+----
+
+= 功能 =
+ * [PageBar 分页]
+ * [jQuery_Validate jQuery表单验证]
+
+----
+
 =  CodeIgniter 一些備註 =
 {{{
 $CI =& get_instance();
@@ -24,9 +32,6 @@ parse_str($_SERVER['QUERY_STRING'],$_GET); //取得$_GET变量
 Page rendered in {elapsed_time} seconds, and use {memory_usage} memory.
 }}}
 
-= 功能 =
- * [PageBar 分页]
- * [jQuery_Validate jQuery表单验证]
 
 ----
 以下内容暂废弃，不做参考
