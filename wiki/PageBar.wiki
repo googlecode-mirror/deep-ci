@@ -11,12 +11,12 @@ $sql .= " and username like 'howard'"
 {{{
 格式1、 fieldname__rule // username__like , date__eq
 格式2、 shorttablename_fieldname__rule // m_username__like member表(m 为定义的简写)username字段
-格式3、 fieldname__rule__shorttablename // username__like__shorttablename 功能同上
+格式3、 fieldname__rule__shorttablename // username__like__m 功能同上
 }}}
 
 shorttablename 必须是一个小的字母。
 
-格式2 与 格式3 功能一样， 当符合*格式3*的的格式要求，则不再判断*格式2*。 *格式3* 是为了防止一些不符合要求的字段 例如 字段 'p_price' 。这样就必须使用*格式3*
+*格式2* 与 *格式3* 功能一样， 当符合 *格式3* 的的格式要求，则不再判断 *格式2* 。 *格式3* 是为了防止一些不符合要求的字段 例如 字段 'p_price' 。这样就必须使用*格式3*
 
 rules 见下面的表格。
 
