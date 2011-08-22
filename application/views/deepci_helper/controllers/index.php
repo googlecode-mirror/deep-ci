@@ -49,8 +49,8 @@ class <?php echo $ucfirst_controller_name;?> extends CI_Controller {
 	{
 		$this->ViewBag['layout_title'] .= ' > 添加';
 		
-		// 加載 jquery.validation
-		$this->layout->loadJs('validation'); 
+		// 加載 jquery.validate.unobtrusive
+		$this->layout->loadJs('validate.unobtrusive'); 
 		
 		$this->layout->view();
 	}
@@ -86,8 +86,8 @@ class <?php echo $ucfirst_controller_name;?> extends CI_Controller {
 	{
 		$this->ViewBag['layout_title'] .= ' > 修改';
 		
-		// 加載 jquery.validation
-		$this->layout->loadJs('validate');
+		// 加載 validate.unobtrusive
+		$this->layout->loadJs('validate.unobtrusive');
 		
 		// 獲取 <?php echo $Model_PdoName;?> 
 		$this->ViewBag['{#member}'] = <?php echo $Model_Full_Name; ?>::getTable()->find($id);

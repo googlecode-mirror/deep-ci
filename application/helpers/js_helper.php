@@ -15,7 +15,11 @@ class JSClass
 		$jsUrl = base_url().'static/jscripts/';
 		switch($jsLibrary) {
 			case 'validate':
-			case 'validation':
+				echo '<link href="'.$jsUrl.'lib/jquery.validate/style.css" rel="stylesheet" type="text/css" />'."\n";
+				echo '<script type="text/javascript" src="'.$jsUrl.'lib/jquery.validate.min.js"></script>'."\n";
+				echo '<script type="text/javascript" src="'.$jsUrl.'lib/jquery.validate.unobtrusive.min.js"></script>'."\n";
+				break;
+			case 'validate.unobtrusive':
 				echo '<link href="'.$jsUrl.'lib/jquery.validate/style.css" rel="stylesheet" type="text/css" />'."\n";
 				echo '<script type="text/javascript" src="'.$jsUrl.'lib/jquery.validate.min.js"></script>'."\n";
 				echo '<script type="text/javascript" src="'.$jsUrl.'lib/jquery.validate.unobtrusive.min.js"></script>'."\n";
