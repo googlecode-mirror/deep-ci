@@ -2,13 +2,8 @@
 这不是一个新的Framwork。
 
 是工作中为了方便快速的开发、基本功能的重用的总结。
-
 是PHP中使用ORM快速开发的实践。
 
-=== 宗旨 ===
-方便、实用 是生存下去的基石。方便调用，基本的常用功能。
-
-= 基础源文件 =
  * MVC Farmwork CodeIgniter
  * ORM Doctrine
  * Javascript based Jquery
@@ -17,15 +12,24 @@
 {{{
 $CI =& get_instance();
 $CI->uri->segment($u);
+$CI->uri->rsegment($u); // 开启CodeIgniter的URI路由时使用
 
+redirect('/admin/'); // 第二个参数为 location 定位操作(默认)。速度快
 redirect('/admin/', 'refresh');
-parse_str($_SERVER['QUERY_STRING'],$_GET); //取得$_GET变量
 
-$this->db->_error_message(); //db error
+parse_str($_SERVER['QUERY_STRING'],$_GET); //取得$_GET变量
 
 #显示系统执行状态
 Page rendered in {elapsed_time} seconds, and use {memory_usage} memory.
 }}}
+
+= 功能 =
+ * [PageBar]
+
+----
+以下内容暂废弃，不做参考
+----
+
 = 所作的修改 =
  * 使用 User_controller 來代替 User (controller 名稱)
  * 使用 ORM Doctrine
