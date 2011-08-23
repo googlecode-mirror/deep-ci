@@ -12,6 +12,7 @@
 ----
 
 = 功能 =
+ * [BaseInfo 基本说明]
  * [PageBar 分页]
  * [jQuery_Validate jQuery表单验证]
    * [Validation PHP生成Js验证]
