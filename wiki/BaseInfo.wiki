@@ -1,0 +1,55 @@
+= 说明 =
+
+Model 使用 Doctrine ORM。
+
+
+关于系统中的 autoload。 判断顺序
+ # Pdo  继承与Base文件。主要是手写程序。
+ # Base ORM自动生成文件
+ # Model 逻辑处理
+ # libraries 一些lib
+
+{{{
+spl_autoload_register('__autoload');
+function __autoload($className) {
+	if (class_exists($className, false) || interface_exists($className, false)) {
+		return false;
+    }
+	
+	// 加載PdoFile
+	if(preg_match('/^Pdo/',$className)) {
+		$classFile	= APPPATH."models/Pdo/".$className.EXT;
+		if(file_exists($classFile))
+		{
+			require $classFile;
+			return true;
+		}
+	}
+	
+	// 加載PdoBase文件
+	if(preg_match('/^Base/',$className)) {
+		$classFile	= APPPATH."models/Pdo/Base/".$className.EXT;
+		if(file_exists($classFile))
+		{
+			require $classFile;
+			return true;
+		}
+	}
+	
+	$file = str_replace('_', DIRECTORY_SEPARATOR, $className);	
+	
+	// Model類， 類似 Model_Member 
+	if(preg_match('/^Model\_/',$className)) {
+		$classFile	= APPPATH."models/".$file.EXT;
+		if(file_exists($classFile))
+		{
+			require $classFile;
+			return true;
+		}
+	}
+	
+	if (file_exists(APPPATH."libraries/".$file.EXT)) {  
+		require APPPATH."libraries/".$file.EXT;  
+	} 
+}
+}}}
