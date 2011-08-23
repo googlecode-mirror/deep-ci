@@ -14,11 +14,23 @@ Model 分为两层一层是Doctrine ORM 负责数据库操作。 一层是逻辑
 目录说明
 
  * models
-  * Model -- 逻辑处理例如 Model_Member
+  * Model -- 逻辑处理例如 {{{Model_Member}}}
   * Pdo -- Doctrine ORM，负责数据库操作。数据表关联。
    * Base -- 自动生成文件，ORM中数据库字段格式。
 
+== Doctrine ORM ==
 
+每个表对应的文件名前增加了Pdo，因为php5.3之前没有命名空间。
+
+PdoMember  
+ * 对应 member表
+ * 文件为 models/Pdo/PdoMember.php
+ * 继承与 models/Pdo/Base/BaseMember.php
+ * 不用使用include，会自动加载
+
+
+== 逻辑部分 ==
+{{{Model/Member.php}}}例子如下：
 {{{
 class Model_Member
 {
@@ -28,6 +40,16 @@ class Model_Member
 	{
 		return Doctrine::getTable(self::$_table);
 	}
+}}}
+
+静态变量 {{{$_table}}} 指定本Model默认关联的 ORM文件。
+
+静态函数 {{{getTable()}}} 会自动返回默认关联ORM的Table。
+
+{{{
+Model_Member::getTable();
+//等同于
+Doctrine::getTable('PdoMember');
 }}}
 
 = Autoload =
