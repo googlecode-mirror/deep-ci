@@ -17,7 +17,7 @@
 
 ----
 
-=  CodeIgniter 一些備註 =
+=  CodeIgniter 注记 =
 {{{
 $CI =& get_instance();
 $CI->uri->segment($u);
@@ -33,61 +33,11 @@ Page rendered in {elapsed_time} seconds, and use {memory_usage} memory.
 }}}
 
 
-----
-以下内容暂废弃，不做参考
-----
 
-= 所作的修改 =
- * 使用 User_controller 來代替 User (controller 名稱)
- * 使用 ORM Doctrine
- * 增加cli.php 用于命令行执行
-(以上修改详见 http://net.tutsplus.com/tutorials/php/6-codeigniter-hacks-for-the-masters/)
-
-== 扩展 ==
- * 新增 Layout.php 并自动加载 （http://codeigniter.com/wiki/layout_library/）
- * 新增 config_commoin.php 并自动加载，增加 VARPATH，开启SESSION
- * 新增 自动加载 url helper 
- * 新增 自動加載 common herlper
- * 新增 自動加載 js plugin
- * 自動加載 libraries 裏面class (spl_autoload_register('__autoload');)
  
- * 修正 Doctrine 設置charset
- * Doctrine 原始文件 移動到 system下面
- * Doctrine 配置，预先加載 models/generated
- * Doctrine modelsAutoload (http://www.doctrine-project.org/projects/orm/1.2/docs/manual/introduction-to-models/en#autoloading-models) 
- * Doctrine getBySegment() 函數。
-
-{{{
-#getBySegment() 函數使用方法
-Doctrine_Core::getTable('Member')->getBySegment(3);
-#如果url 是 /member/info/4 , 则会直接查找id为4的会员。
-}}}
- 
- * 新增 PageBar功能
- * 新增 PageBarSession 存放搜索條件
-
- * 使用 jquery Validation 验证form
- * js() 只保留 alert 以及 goto ,goto內部嵌套site_url
- 
-= 一些规定 =
+= 数据相关约定 =
  * 数据库表的名称以单数命名
  * 數據庫都自增1字段都 命名為 id，其他以單詞+下劃綫
- * 數據庫字段以小寫字母開頭，其他單詞大寫。
  * 數據庫中儘量避免使用 NULL
  * 时间字段使用 datetime 类型。数据量过大时在考虑转换成int类型。
- * views目錄下文件都是以 訪問名稱（member 而不是 member_controller）+ function名稱命名。例如member_list.php
-
-== Model功能，合并还是分离 ==
- * 合并调用起来方便， 但是不方便以后管理。
- * 分离，分离出新的model，调用的时候肯需要传递参数（obj or 数据）
-
-暂时如下
- * 小的功能呢简单的查询名称， 合并
- * 如果所涉及的或所需的操作过多，分离
-
-model 于 model 之间是需要联系，最终根据复杂程度来 判断是否需要分离
-
-== 简化html中php代码的思考 ==
-CodeIgniter 中的view 是直接使用php代码的。 但应简化view的php code。
-
-if语句、基本的函数(date,trim)、 感觉是可以使用的。
+ 
