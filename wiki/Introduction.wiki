@@ -14,6 +14,7 @@
 = 功能 =
  * [PageBar 分页]
  * [jQuery_Validate jQuery表单验证]
+   * [Validation PHP生成Js验证]
  * [Doctrine Doctrine ORM 操作]
 
 ----
