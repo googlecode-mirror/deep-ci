@@ -67,6 +67,29 @@ View頁面 PHP代碼
 
 = 分页 =
 
+{{{
+// search data
+$this->ViewBag['sData'] = DeepCI::getSearchData();
+
+// query dql
+$q = Doctrine_Query::create()
+		->from('PdoMember m')
+		->orderBy('id desc');
+
+// pageBar
+$pageBar = DeepCI::getPageBar($q, $offset);
+// echo $pageBar->getSqlQuery();
+
+$this->ViewBag['listRows']	= $pageBar->getResult();
+$this->ViewBag['pageBar']	= $pageBar->getHtml();
+}}}
+
+ * {{{$pageBar->getResult();}}} 數據庫查詢結果。
+ * {{{$this->ViewBag['pageBar']	= $pageBar->getHtml();}}} 分頁相關HTML代碼
+  * {{{$pageBar['sort']}}} 排序方案 例如 {{{sort_desc='m.id'}}}
+  * {{{$pageBar['html']}}} 分頁HTML代買，顯示共多少頁，當前第幾頁等。
+  * {{{$pageBar['select']}}} 一個下拉菜單，顯示該頁顯示多少條數據。
+
 ----
 以下内容暂时废弃，不做参考
 ----
