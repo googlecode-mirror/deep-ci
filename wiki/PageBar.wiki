@@ -90,101 +90,23 @@ $this->ViewBag['pageBar']	= $pageBar->getHtml();
   * {{{$pageBar['html']}}} 分頁HTML代買，顯示共多少頁，當前第幾頁等。
   * {{{$pageBar['select']}}} 一個下拉菜單，顯示該頁顯示多少條數據。
 
-----
-以下内容暂时废弃，不做参考
-----
-
-class PageBar。整合Doctrine, codeigniter->pagination 的分頁類。
-Doctrine_Pager 用來查詢，并統計。 pagination 用來生成html。
-
+== 特殊查询 ==
+当有特殊查询的时候可以修改 dql
 {{{
-#query 
+// query dql
 $q = Doctrine_Query::create()
-		->from('Member')
-		->where($where)
+		->from('PdoMember m')
 		->orderBy('id desc');
-
-$pageBar = new PageBar;
-$pageBar->setBaseUrl('member/index') //分页中的地址
-	->setPerPage(12) //每页显示多少行
-	->setOffset($offset); // setUriSegment(3) 是舊的方式，
-//第几页的开始字段，于codeigniter 结合 $CI->uri->segment()。
-//分页开始的字段 member/index/24， 
-
-list($items,$html) = $pageBar->get($q);
-//$items 返回的查询结果
-//$html 返回的pagebar html
 }}}
 
-== 控制显示条数 ==
-
-在页面中可以选择每页显示多少条。 数据存储到Session中， 使用到 PageBarSession
-
+== 特殊判断 ==
+当有字段的特殊判断时 , 可以手动添加判断
 {{{
-$pageBar = new PageBar;
-$pageBar->setBaseUrl('rank/index')
-		->setPerPage(12,PageBar::PERPAGE_CHANGE) //默认为12条，
-		->setUriSegment(3);
-list($items,$html) = $pageBar->get($q);
+// search data
+$sData  = DeepCI::getSearchData();
+$this->ViewBag['sData'] = $sData;
 
-##当下显示多少条
-$pageBar->getPerPage();
-}}}
-
-= 查询条件 =
-class PageBarSession 所有数据都根据使用 页面名称存储到Session。
-
-{{{
-$sData = PageBarSession::get();//取得查询条件
-$data['sData'] = $sData;
-
-//根据查询条件申城 where 語句
-$where = " member_id='{$member->id}'";
-if(!empty($sData->keyword))
-    $where .= " and keyword like '%{$sData->keyword}%'";
-}}}
-
-== 上次查询地址 ==
-
-{{{
-$url = PageBarSession::getLastUri('member/news');
-
-#在调用之前必须执行 
-$sData = PageBarSession::get();
-#或
-PageBarSession::init();
-}}}
-
-= 例子 =
-一个完整的综合查询的例子
-
-{{{
-//查詢條件
-$sData = PageBarSession::get();
-$data['sData'] = $sData;
-
-//where 語句
-$where = " member_id='{$member->id}'";
-if(!empty($sData->keyword))
-	$where .= " and keyword like '%{$sData->keyword}%'";
-if(!empty($sData->url)&&$sData->url!='http://')
-	$where .= " and url like '%{$sData->url}%'";
-if(!empty($sData->group_id))
-	$where .= " and group_id = '{$sData->group_id}'";
-
-//分頁
-$q = Doctrine_Query::create()
-		->from('Rank')
-		->where($where)
-		->orderBy('id desc');
-
-$pageBar = new PageBar;
-$pageBar->setBaseUrl('rank/index')
-		->setPerPage(12,PageBar::PERPAGE_CHANGE)
-		->setUriSegment(3);
-list($items,$html) = $pageBar->get($q);
-
-$data['rankList'] = $items;
-$data['pageBar'] = $html;
-$data['perPage'] = $pageBar->getPerPage();
+if($sData->username!='xxx') {
+    page_message_error('index', '用户名不能为xxx');
+}
 }}}
