@@ -5,14 +5,20 @@
 $res = $q->fetchOne(); 和 $res = $q->execute(); 返回的都是对象。
 $res->id 也是对象。
 
-当没有结果时，  $q->fetchOne(); 返回 空NULL。 $q->execute();  返回一个对象。
 
-所以 判断是否为空可以
 {{{
-$res->toArray(); //然后在判断
-$res->get('id'); //真是的得到一个值。
-}}}
+// 当没有结果时
+$q->fetchOne(); // 返回 空NULL。 
+$q->execute();  // 返回一个对象。不能能用 if 直接判断
 
+
+## 在查询一个的情况下 例如 find, findOne, fetchOne
+## 如果不存在 则返回 false
+$member = Doctrine::getTable('Member')->find(1);
+if($member) {
+	//do 
+}
+}}}
 
 = Search = 
 
@@ -83,18 +89,6 @@ $q->select('{u.*}')
 $users = $q->execute();
 print_r($users->toArray());
 }}}
-
-== 判断返回值 ==
-
-{{{
-## 在查询一个的情况下 例如 find, findOne, fetchOne, getBySegment 
-## 如果不存在 则返回 false
-$member = Doctrine::getTable('Member')->find(1);
-if($member) {
-	//do 
-}
-}}}
-
 
 = add, edit, delete =
 
