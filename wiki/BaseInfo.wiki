@@ -1,8 +1,24 @@
 = 说明 =
 
+基本上不再使用 include require 。一些加载都是由 {{{__autoload}}} 完成。详见最下方的 autoload 
+
+= Model =
+
 Model 使用 Doctrine ORM。
 
 
+{{{
+class Model_Member
+{
+	private static $_table = 'PdoMember';
+	
+	public static function getTable()
+	{
+		return Doctrine::getTable(self::$_table);
+	}
+}}}
+
+= autoload =
 关于系统中的 autoload。 判断顺序
  # Pdo  继承与Base文件。主要是手写程序。
  # Base ORM自动生成文件
