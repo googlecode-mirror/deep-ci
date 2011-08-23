@@ -20,6 +20,8 @@ Model 分为两层一层是Doctrine ORM 负责数据库操作。 一层是逻辑
 
 == Doctrine ORM ==
 
+主要负责数据库操作，表的关联。
+
 每个表对应的文件名前增加了Pdo，因为php5.3之前没有命名空间。
 
 PdoMember  
@@ -30,6 +32,9 @@ PdoMember
 
 
 == 逻辑部分 ==
+
+主要负责 逻辑处理，
+
 {{{Model/Member.php}}}例子如下：
 {{{
 class Model_Member
