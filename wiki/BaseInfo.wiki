@@ -12,13 +12,12 @@ Model 使用 Doctrine ORM。
 Model 分为两层一层是Doctrine ORM 负责数据库操作。 一层是逻辑处理（Model）。
 
 目录说明
-{{{
+
  * models
   * Model -- 逻辑处理例如 Model_Member
   * Pdo -- Doctrine ORM，负责数据库操作。数据表关联。
    * Base -- 自动生成文件，ORM中数据库字段格式。
-    
-}}}
+
 
 {{{
 class Model_Member
