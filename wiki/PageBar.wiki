@@ -35,6 +35,36 @@ rules 见下面的表格。
 || flike || {{{like %xxx%}}} || username__flike || username like '%howard%' ||
 
 = 排序 =
+
+{{{
+<table class="tab_content sortabletable autoClass" sort_desc='m.id'>
+  <tr>
+	<th class="sort" sort_field="m.id">id</th>
+	<th class="sort" sort_field="username">username</th>
+	<th class="sort" sort_field="passowrd">passowrd</th>
+	<th class="sort" sort_field="email">email</th>
+	<th class="sort" sort_field="create_date">create_date</th>
+	<th class="tal">操作</th>
+  </tr>
+
+  ... ...
+
+</table>
+}}}
+
+ * table 必須加入CSS樣式  sortabletable  。
+ * sort_desc='m.id' 表示 字段m.id 倒序排列， 升序表示 sort_asc='m.id'
+  * m.id 表示 m 表的 字段id
+  * 該部份是由PHP生成的。 {{{$pageBar['sort'];}}} 可以參考下面例子。
+ * th 必須有 CSS樣式 class="sort"
+  * 如果某列不用 則去掉 CSS樣式 sort
+  * sort_field="username" 表示該欄位對應的字段名稱 username 
+
+View頁面 PHP代碼
+{{{
+<table class="tab_content sortabletable autoClass" <?php echo $pageBar['sort'];?>>
+}}}
+
 = 分页 =
 
 ----
