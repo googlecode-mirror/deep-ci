@@ -17,6 +17,7 @@
  * [jQuery_Validate jQuery表单验证]
    * [Validation PHP生成Js验证]
  * [Doctrine Doctrine ORM 操作]
+   * [http://code.google.com/p/deep-ci/wiki/Doctrine#优点 ORM优点]
 
 ----
 
