@@ -218,6 +218,6 @@ $member->domain;
 2、快速查取
 {{{
 Doctrine::getTable('Member')->find(1); // id 是 1 的会员
-Doctrine::getTable('Member')->findByAge(20);  // age 是 20 的会员
+Doctrine::getTable('Member')->findByAge(20);  // age 是 20 的所有会员
 Doctrine::getTable('Member')->findOneByEmail('xxx@gmail.com'); // 返回一个会员， 
 }}}
