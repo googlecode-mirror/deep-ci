@@ -198,3 +198,26 @@ $q = Doctrine_Query::create()
 	->useResultCache(true)
 	->setResultCacheLifeSpan(3600);
 }}}
+
+== 优点 ==
+
+1、快速修改
+{{{
+$member->email = 'xxx@gmail.com';
+$member->save();
+}}}
+
+2、关联性
+{{{
+// 假设相关关联已经设定好。
+$domain->member; // 获取 domain 记录对应的 member 。 
+$domain->member->username; // member 名称
+$member->domain;
+}}}
+
+2、快速查取
+{{{
+Doctrine::getTable('Member')->find(1); // id 是 1 的会员
+Doctrine::getTable('Member')->findByAge(20);  // age 是 20 的会员
+Doctrine::getTable('Member')->findOneByEmail('xxx@gmail.com'); // 返回一个会员， 
+}}}
