@@ -163,28 +163,25 @@ class DeepCI_Validation_Core
 	{
 		$html = 'name="'.$field.'" id="'.$field.'"';
 		
-		if(empty($field) or empty($this->rules)) {
-			return $html;
-		}
-		
-		$rules = $this->rules;
-		if(empty($rules[$field])) {
-			return $html;
-		}
-		
-		$this->nowField = $field;
-		
-		foreach($rules[$field] as $r) {
-			$html .= $this->_createValidationHtml($r, $field);
-		}
-		
-		if(!empty($html)) {
-			$html = ' data-val="true"'.$html;
+		if ( ! empty($this->rules[$field]) ) 
+		{
+			$rules = $this->rules;
+			
+			$this->nowField = $field;
+			
+			foreach($rules[$field] as $r) {
+				$html .= $this->_createValidationHtml($r, $field);
+			}
+			
+			if(!empty($html)) {
+				$html = ' data-val="true"'.$html;
+			}
 		}
 		
 		//默認值
 		$defaultValue =& $this->defaultValue;
-		if(!empty($defaultValue[$field])) {
+		if( isset($defaultValue[$field]) ) 
+		{
 			$html = ' value="'.$defaultValue[$field].'" '.$html;
 		}
 		
