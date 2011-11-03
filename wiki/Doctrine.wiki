@@ -24,9 +24,11 @@ if($member) {
 
 {{{
 ## return one
+Doctrine::getTable('Member')->findOneBy('keyword', $key)
 Doctrine::getTable('Member')->findOneByKeyword($key); 
 
 ## return list
+Doctrine::getTable('Member')->findBy('keyword', $key)
 Doctrine::getTable('Member')->findByKeyword($key);
 
 ## find by id
