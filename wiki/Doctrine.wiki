@@ -55,6 +55,7 @@ $q->fetchOne(); // *return one or null*
 $q->execute();
 $q->execute()->toArray(); //return array
 $q->getSqlQuery();// return SQL
+$q->count(); // 返回符合條件的總數
 }}}
 
 === 直接使用SQL ===
