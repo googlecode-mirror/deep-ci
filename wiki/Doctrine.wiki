@@ -50,6 +50,14 @@ $q->execute();
 $q->execute()->toArray(); //return array
 $q->getSqlQuery();// return SQL
 $q->count(); // 返回符合條件的總數
+
+## query 分頁相關
+$q = Doctrine_Query::create()
+		->from('RankGroup')
+		->where("member_id='{$member->id}'")
+		->orderBy('id')
+                ->offset(10)
+                ->limit(50);
 }}}
 
 === 直接使用SQL ===
