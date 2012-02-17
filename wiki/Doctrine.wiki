@@ -12,7 +12,7 @@ $q->fetchOne(); // 返回 空NULL。
 $q->execute();  // 返回一个对象。不能直接用 if 判断，可以用$q->count()==0 來判斷
 
 
-## 在查询一个的情况下 例如 find, findOne, fetchOne
+## 在查询一个的情况下 例如 find(), findOne(), fetchOneBuy()
 ## 如果不存在 则返回 false
 $member = Doctrine::getTable('Member')->find(1);
 if($member) {
