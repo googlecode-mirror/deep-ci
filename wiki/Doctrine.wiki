@@ -37,12 +37,6 @@ Doctrine::getTable('Member')->find(1); // id 为 1 的会员。
 ## find all
 Doctrine::getTable('Member')->findAll();
 
-## 于codeinteger 整合 此部分于CI2.0舍去 
-//调用 $CI->uri->segment($u);
-Doctrine::getTable('Member')->getBySegment(3); # /member/info/4 id为4的会员
-
-//调用 $CI->uri->rsegment($u);
-Doctrine::getTable('News')->getByRSegment(3);# 使用 URI Routing 情况下读取字段 /news-12.html
 }}}
 
 {{{
@@ -79,7 +73,7 @@ $result = $st->fetchAll();
 }}}
 
 === Doctrine_RawSql  ===
-官方手册提供的，执行Native SQL的方法。其他的暂不知。持保留态度。
+官方手册提供的，执行Native SQL的方法。(其他的暂不知，持保留态度！)
 
 {{{
 $conn = Doctrine_Manager::connection();
