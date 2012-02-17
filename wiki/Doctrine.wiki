@@ -9,7 +9,7 @@ $res->id 也是对象。
 {{{
 // 当没有结果时
 $q->fetchOne(); // 返回 空NULL。 
-$q->execute();  // 返回一个对象。不能直接用 if 判断，可以用$q->count()==0 來判斷
+$q->execute();  // 返回一个对象。不能直接用 if 判断，可以用 $q->count()==0 來判斷
 
 
 ## 在查询一个的情况下 例如 find(), findOne(), fetchOneBy()
