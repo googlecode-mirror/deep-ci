@@ -226,3 +226,56 @@ Doctrine::getTable('Member')->find(1); // id 是 1 的会员
 Doctrine::getTable('Member')->findByAge(20);  // age 是 20 的所有会员
 Doctrine::getTable('Member')->findOneByEmail('xxx@gmail.com'); // 返回一个会员， 
 }}}
+
+== 級聯保存 ==
+
+如果有個Order的表，對應的類如下 
+{{{
+// 錯誤的調用
+// 如果有設定hasOne的關聯，可以直接用以下方法調用。
+// 這樣做是為了利用關聯查詢，一次性查詢出來，以便提高性能，但是可能會出錯。關於性能參見下面的一節
+function getMember() {
+    return $this->Member;
+}
+}}}
+
+在其他的頁面調用 
+{{{
+$member = $order->getMember();
+
+$order->state = 'ok';
+$order->save();
+}}}
+
+*當$member為空的時候就會出錯。*
+
+{{{
+// 正確的調用
+function getMember() {
+    // 重新查一下Member表。
+}
+}}}
+
+== 查詢關聯&性能 == 
+
+正確的關聯應該如下：
+{{{
+$this->hasOne('Forum_Board as Board', array(
+  'local' => 'board_id',
+  'foreign' => 'id'
+ )
+);
+
+
+$this->hasMany('Phonenumber as Phonenumbers', array(
+  'local' => 'id',
+  'foreign' => 'user_id'
+ )
+);
+}}}
+
+在使用查詢的時候可以使用Leftjoin函數 來制定關聯數據庫，這樣就一次性查詢出來了。 待用的方式
+{{{
+$r->Board;
+}}}
+這樣可以節省性能。
