@@ -244,10 +244,10 @@ function getMember() {
 $member = $order->getMember();
 
 $order->state = 'ok';
-$order->save();
+$order->save(); // 當$member為空的時候就會出錯。Doctrine 會自動保存一個空的member記錄，這個時候很可能會出錯。
 }}}
 
-*當$member為空的時候就會出錯。*
+
 
 {{{
 // 正確的調用
