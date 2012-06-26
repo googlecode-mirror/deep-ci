@@ -173,7 +173,7 @@ $member->save();
 == 注意 ==
 
 {{{
-$this->Service; // 這樣的調用，建議只在多表聯合查詢的時候是有（leftjoin）。 
+$virtualHostServer->Service; // 這樣的調用，建議只在多表聯合查詢的時候是有（leftjoin）。 
 $this->getService(); // 函數中， 不要使用 return $this->Service; *容易產生級聯保存的錯誤！！！ *
 }}}
 
