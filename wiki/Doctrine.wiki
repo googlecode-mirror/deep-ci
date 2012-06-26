@@ -170,6 +170,13 @@ $member->unlink('VirtualHostServers');
 $member->save();
 }}}
 
+== 注意 ==
+
+{{{
+$this->Service; 這樣的調用，建議只在多表聯合查詢的時候是有（leftjoin）。 
+$this->getService(); 函數中， 不要使用 return $this->Service; *容易產生級聯保存的錯誤！！！ *
+}}}
+
 = Cache =
 ORM确实方便开发，但是当使用过多的 使用复杂的数据关系，以及调用过多的查询相关，会明显慢下来。
 
