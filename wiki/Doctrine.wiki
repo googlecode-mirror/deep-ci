@@ -25,11 +25,11 @@ if($member) {
 {{{
 ## return one
 Doctrine::getTable('Member')->findOneBy('keyword', $key); // findOneBy($fieldName, $value);
-Doctrine::getTable('Member')->findOneByKeyword($key); 
+Doctrine::getTable('Member')->findOneByKeyword($key);  // 不要使用該方法，容易混淆
 
 ## return list
 Doctrine::getTable('Member')->findBy('keyword', $key); // findBy($fieldName, $value);
-Doctrine::getTable('Member')->findByKeyword($key);
+Doctrine::getTable('Member')->findByKeyword($key); // 不要使用該方法，容易混淆
 
 ## find by id
 Doctrine::getTable('Member')->find(1); // id 为 1 的会员。
