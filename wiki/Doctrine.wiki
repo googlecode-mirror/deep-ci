@@ -108,6 +108,13 @@ $q = Doctrine_Query::create()
 		->delete('Member')
 		->where('id = ?', $id);
 $q->execute();
+
+//sql update
+Doctrine_Query::create()
+  ->update('User u')
+  ->set('u.is_active', '?', true)
+  ->where('u.id = ?', 1)
+  ->execute();
 }}}
 
 = 表的关联 =
