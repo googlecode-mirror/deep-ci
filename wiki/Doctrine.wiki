@@ -81,7 +81,7 @@ $result = $st->fetchAll();
 }}}
 
 === Doctrine_RawSql  ===
-官方手册提供的，执行Native SQL的方法。(其他的暂不知，持保留态度！)
+官方手册提供的，执行Native SQL的方法。 这种方法会得到一个实例化的类（addComponent）。
 
 {{{
 $conn = Doctrine_Manager::connection();
@@ -237,8 +237,8 @@ $member->domain;
 2、快速查取
 {{{
 Doctrine::getTable('Member')->find(1); // id 是 1 的会员
-Doctrine::getTable('Member')->findByAge(20);  // age 是 20 的所有会员
-Doctrine::getTable('Member')->findOneByEmail('xxx@gmail.com'); // 返回一个会员， 
+Doctrine::getTable('Member')->findBy('age', 20);  // age 是 20 的所有会员
+Doctrine::getTable('Member')->findOneBy('email', 'xxx@gmail.com'); // 返回一个会员， 
 }}}
 
 == 級聯保存 ==
