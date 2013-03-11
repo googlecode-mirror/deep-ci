@@ -43,7 +43,8 @@ Doctrine::getTable('Member')->findAll();
 ## query
 $q = Doctrine_Query::create()
 		->from('RankGroup')
-		->where("member_id='{$member->id}'")
+		->where("member_id = ?", $member->id)
+                ->adnWhere("address_id = ?", 2)
 		->orderBy('id');
 $q->fetchOne(); // *return one or null*
 $q->execute();
