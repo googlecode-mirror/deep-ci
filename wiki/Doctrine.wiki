@@ -20,6 +20,15 @@ if($member) {
 }
 }}}
 
+= Flush =
+
+有時候 需要在執行過程中 flush 內容到數據庫。
+
+{{{
+## 發送數據
+Doctrine_Manager::connection()->flush();
+}}}
+
 = Search = 
 
 {{{
