@@ -55,10 +55,11 @@ $q = Doctrine_Query::create()
 		->where("member_id = ?", $member->id)
                 ->adnWhere("address_id = ?", 2)
 		->orderBy('id');
-$q->fetchOne(); // *return one or null*
+
 $q->execute();
 $q->execute()->toArray(); //return array
 $q->getSqlQuery();// return SQL
+$q->fetchOne(); // *return one or null*
 $q->count(); // 返回符合條件的總數
 
 ## query 分頁相關
