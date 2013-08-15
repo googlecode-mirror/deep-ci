@@ -53,7 +53,7 @@ Doctrine::getTable('Member')->findAll();
 $q = Doctrine_Query::create()
 		->from('RankGroup')
 		->where("member_id = ?", $member->id)
-                ->adnWhere("address_id = ?", 2)
+                ->andWhere("address_id = ?", 2)
 		->orderBy('id');
 
 $q->execute();
