@@ -1,15 +1,17 @@
 = 簡介 =
 
 {{{
+
+User::query();
+
 // Tree
 $tree = $books->getBaseTree();
 $books->getFirstLevelTree();
+
 $tree->getChild();
 $tree->getFamily();
 $tree->getFirstImage();
 
-Image::hasIn($book); // {{  }}
-Image::allIn($book);
 $book->hasImage();
 $book->getFirstImage();
 $book->getFirstImage()->path();
@@ -21,5 +23,4 @@ $book->getAllFiles();
 $book->hasTree();
 $book->getAllTree();
 
-$this->images->hasIn($book);
 }}}
