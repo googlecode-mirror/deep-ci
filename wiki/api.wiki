@@ -1,0 +1,25 @@
+= 簡介 =
+
+{{{
+// Tree
+$tree = $books->getBaseTree();
+$books->getFirstLevelTree();
+$tree->getChild();
+$tree->getFamily();
+$tree->getFirstImage();
+
+Image::hasIn($book); // {{  }}
+Image::allIn($book);
+$book->hasImage();
+$book->getFirstImage();
+$book->getFirstImage()->path();
+$book->getAllImages();
+
+$book->hasFile();
+$book->getAllFiles();
+
+$book->hasTree();
+$book->getAllTree();
+
+$this->images->hasIn($book);
+}}}
